@@ -14,7 +14,16 @@ Gmail : vantho210903@gmail.com
 
 ===
 
-Cách chạy tauij chế dộ production :
+Các bước cài đặt: (Chế độ development
+
+1. clone code
+2. Cài đặt thư viện: mpn i
+3. Update file: .env.development(nếu cần thiết)
+4. Chạy dự án: npm run dev
+
+===
+
+Cách chạy tại chế dộ production :
 
 1. clone code
 2. cài đặt thư viện: npm i
