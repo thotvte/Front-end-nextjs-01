@@ -5,31 +5,27 @@ import {
   InvalidEmailPasswordError,
 } from "./utils/errors";
 import { sendRequest } from "./utils/api";
-import Password from "antd/es/input/Password";
-import Email from "next-auth/providers/email";
 import { IUser } from "./types/next-auth";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
-      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-      // e.g. domain, username, password, 2FA token, etc.
       credentials: {
-        email: {},
+        username: {},
         password: {},
       },
       authorize: async (credentials) => {
         let user = null;
         const res = await sendRequest<IBackendRes<ILogin>>({
           method: "POST",
-          url: "http://localhost:8080/api/v1/auth/login",
+          url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/login`,
           body: {
-            username: credentials.email,
+            username: credentials.username,
             password: credentials.password,
           },
         });
 
-        if (!res.statusCode) {
+        if (+res.statusCode === 201) {
           return {
             _id: res.data?.user?._id,
             name: res.data?.user?.name,
@@ -41,7 +37,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         } else if (+res.statusCode === 400) {
           throw new InactiveAccountError();
         } else {
-          throw new Error("Internal server error");
+          throw new Error("Internal server error 123");
         }
 
         // return user object with their profile data
@@ -63,6 +59,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     session({ session, token }) {
       (session.user as IUser) = token.user;
       return session;
+    },
+    authorized: async ({ auth }) => {
+      // Logged in users are authenticated, otherwise redirect to login page
+      return !!auth;
     },
   },
 });
