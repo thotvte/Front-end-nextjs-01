@@ -8,13 +8,13 @@ https://www.npmjs.com/package/node/v/20.14.0
 
 # Về tác giả
 
-Mọi thôn tin liên hệ về Tôi , các bạn có thể tìm kiếm tại đây "
+Mọi thông tin liên hệ về Tôi , các bạn có thể tìm kiếm tại đây "
 
 Gmail : vantho210903@gmail.com
 
 ===
 
-Các bước cài đặt: (Chế độ development
+Các bước cài đặt: (Chế độ development)
 
 1. clone code
 2. Cài đặt thư viện: mpn i

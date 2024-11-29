@@ -1,15 +1,14 @@
 "use client";
-
-import { CrownOutlined } from "@ant-design/icons";
-import { Result } from "antd";
+import React, { useState } from "react";
+import Footer from "../MainLayout/footer";
+import Header from "../MainLayout/header";
 
 const HomePage = () => {
   return (
-    <div style={{ padding: 20 }}>
-      <Result
-        icon={<CrownOutlined />}
-        title="Fullstack Next/Nest - createdBy @Thodeptrai"
-      />
+    <div>
+      <Header />
+      THO DEP TRAI !!!!!!!!!!!!!
+      <Footer />
     </div>
   );
 };
