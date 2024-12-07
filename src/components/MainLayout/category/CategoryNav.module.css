@@ -1,0 +1,21 @@
+.navContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 80px;
+  border-bottom: 1px solid #dddddd;
+  cursor: pointer;
+}
+
+.navItem {
+  padding: 20px 40px;
+  width: 17%;
+  font-weight: 500;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navItem:hover {
+  color: #fea200;
+  box-shadow: 0 1px 0 0 #f79009;
+}

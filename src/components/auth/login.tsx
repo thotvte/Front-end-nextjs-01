@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import ModalReactive from "./modal.reactive";
 import { useState } from "react";
 import ModalChangePassword from "./modal.change.password";
+import Header from "../MainLayout/header/page";
+import Footer from "../MainLayout/footer/page";
 
 const Login = () => {
   const router = useRouter();
@@ -36,7 +38,8 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div>
+      <Header />
       <Row justify={"center"} style={{ marginTop: "30px" }}>
         <Col xs={24} md={16} lg={8}>
           <fieldset
@@ -117,7 +120,8 @@ const Login = () => {
         isModalOpen={changePassword}
         setIsModalOpen={setChangePassword}
       />
-    </>
+      <Footer />
+    </div>
   );
 };
 

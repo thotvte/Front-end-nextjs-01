@@ -1,0 +1,80 @@
+.listproduct {
+  display: flex;
+  flex-wrap: wrap; /* Cho phép các phần tử tự động xuống dòng khi không đủ không gian */
+  gap: 20px; /* Khoảng cách giữa các sản phẩm */
+  justify-content: flex-start; /* Căn trái cho các phần tử */
+  margin-top: 15px;
+  padding: 10px; /* Thêm khoảng cách bên trong */
+}
+
+.product {
+  width: 172px; /* Cố định chiều rộng cho sản phẩm */
+  height: 346px; /* Chiều cao cố định */
+  border: 1px solid #f2f4f7;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Khoảng cách giữa các sản phẩm theo chiều dọc */
+  flex-shrink: 0; /* Đảm bảo sản phẩm không bị co lại khi xuống dòng */
+}
+
+.producttitle {
+  color: #1d2939;
+  margin: 10px 5px; /* Thêm khoảng cách cho phần tiêu đề */
+  font-size: 1.2rem;
+  font-weight: 600;
+  white-space: nowrap; /* Ngừng xuống dòng */
+  overflow: hidden; /* Ẩn phần văn bản thừa */
+  text-overflow: ellipsis; /* Thêm dấu ba chấm khi văn bản dài */
+}
+
+.originalprice {
+  color: #dd2f2c;
+  margin-left: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ẩn phần thừa và hiển thị ba chấm */
+}
+
+.oldprice {
+  text-decoration: line-through; /* Gạch ngang */
+  color: gray;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-left: 5px;
+  margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.discount {
+  color: #dd2f2c;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-left: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2a83e9;
+  background-color: #f1f8fe;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer; /* Thêm hiệu ứng con trỏ khi hover */
+}
+
+.product:hover {
+  opacity: 0.8; /* Giảm độ sáng khi hover */
+}

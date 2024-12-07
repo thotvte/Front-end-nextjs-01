@@ -5,6 +5,8 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { sendRequest } from "@/utils/api";
 import { useRouter } from "next/navigation";
+import Footer from "../MainLayout/footer/page";
+import Header from "../MainLayout/header/page";
 
 const Register = () => {
   const router = useRouter();
@@ -30,69 +32,73 @@ const Register = () => {
   };
 
   return (
-    <Row justify={"center"} style={{ marginTop: "30px" }}>
-      <Col xs={24} md={16} lg={8}>
-        <fieldset
-          style={{
-            padding: "15px",
-            margin: "5px",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-          }}
-        >
-          <legend>Đăng Ký Tài Khoản</legend>
-          <Form
-            name="basic"
-            onFinish={onFinish}
-            autoComplete="off"
-            layout="vertical"
+    <>
+      <Header />
+      <Row justify={"center"} style={{ marginTop: "30px" }}>
+        <Col xs={24} md={16} lg={8}>
+          <fieldset
+            style={{
+              padding: "15px",
+              margin: "5px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+            }}
           >
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your email!",
-                },
-              ]}
+            <legend>Đăng Ký Tài Khoản</legend>
+            <Form
+              name="basic"
+              onFinish={onFinish}
+              autoComplete="off"
+              layout="vertical"
             >
-              <Input />
-            </Form.Item>
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your email!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
 
-            <Form.Item
-              label="Password"
-              name="password"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your password!",
-                },
-              ]}
-            >
-              <Input.Password />
-            </Form.Item>
+              <Form.Item
+                label="Password"
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your password!",
+                  },
+                ]}
+              >
+                <Input.Password />
+              </Form.Item>
 
-            <Form.Item label="Name" name="name">
-              <Input />
-            </Form.Item>
+              <Form.Item label="Name" name="name">
+                <Input />
+              </Form.Item>
 
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Form.Item>
-          </Form>
-          <Link href={"/"}>
-            <ArrowLeftOutlined /> Quay lại trang chủ
-          </Link>
-          <Divider />
-          <div style={{ textAlign: "center" }}>
-            Đã có tài khoản? <Link href={"/auth/login"}>Đăng nhập</Link>
-          </div>
-        </fieldset>
-      </Col>
-    </Row>
+              <Form.Item>
+                <Button type="primary" htmlType="submit">
+                  Submit
+                </Button>
+              </Form.Item>
+            </Form>
+            <Link href={"/"}>
+              <ArrowLeftOutlined /> Quay lại trang chủ
+            </Link>
+            <Divider />
+            <div style={{ textAlign: "center" }}>
+              Đã có tài khoản? <Link href={"/auth/login"}>Đăng nhập</Link>
+            </div>
+          </fieldset>
+        </Col>
+      </Row>
+      <Footer />
+    </>
   );
 };
 
