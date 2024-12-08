@@ -149,7 +149,7 @@ const Header = () => {
               <i>
                 <img src="https://cdn.tgdd.vn/content/sim-24x24.png" alt="" />
               </i>
-              <span>Sim, Thẻ C</span>
+              <span>Sim, Thẻ Cào</span>
             </a>
           </li>
           <li>

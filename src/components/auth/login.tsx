@@ -43,8 +43,8 @@ const Login = () => {
       <div style={{ position: "relative" }}>
         <Header />
       </div>
-      <div>
-        <Row justify={"center"} style={{ marginTop: "30px" }}>
+      <div style={{ height: "100%" }}>
+        <Row justify={"center"} style={{ marginTop: "10px" }}>
           <Col xs={24} md={16} lg={8}>
             <fieldset
               style={{
@@ -125,7 +125,15 @@ const Login = () => {
           setIsModalOpen={setChangePassword}
         />
       </div>
-      <Footer />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-50px",
+          width: "100%",
+        }}
+      >
+        <Footer />
+      </div>
     </div>
   );
 };

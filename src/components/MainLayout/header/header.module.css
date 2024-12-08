@@ -54,7 +54,7 @@
 .mainMenu li {
   display: flex;
   align-items: center; /* Căn giữa các phần tử con (hình ảnh và văn bản) theo chiều dọc */
-  margin-left: -15px;
+  margin-left: -10px;
 }
 
 .mainMenu a {
@@ -65,7 +65,7 @@
 }
 
 .mainMenu img {
-  margin-right: 4px; /* Khoảng cách giữa hình ảnh và văn bản */
+  margin-right: 2px; /* Khoảng cách giữa hình ảnh và văn bản */
 }
 
 .mainMenu span {
