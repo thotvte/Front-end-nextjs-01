@@ -31,30 +31,13 @@ const Header = () => {
             <Image
               src={logo}
               alt="LOGO"
-              width={100}
-              height={100}
+              width={150}
+              height={70}
               style={{ cursor: "pointer" }}
             ></Image>
           </a>
           <nav className="nav">
             <ul>
-              <div>
-                <li
-                  style={{
-                    display: "flex",
-                    backgroundColor: "#EAEAEA",
-                    textDecoration: "none",
-                    textAlign: "center",
-                    justifyItems: "center",
-                    borderRadius: "15px",
-                    marginRight: "40px",
-                  }}
-                >
-                  <MenuOutlined style={{ paddingLeft: "15px" }} />
-                  <a href="#!">Danh mục</a>
-                </li>
-              </div>
-
               <li className={styles.search}>
                 <Search
                   placeholder="Nhập tên điện thoại, máy tính, phụ kiện cần tìm "
@@ -65,25 +48,122 @@ const Header = () => {
           </nav>
 
           <div className={styles.login}>
-            <a href="/auth/login">
+            <a href="/auth/login" className={styles.signUpButton}>
               <LoginOutlined
-                style={{
-                  color: "#fff",
-                  backgroundColor: "#7D161C",
-                  opacity: hovered ? 0.9 : 1,
-                  padding: "15px",
-                  borderRadius: "50%",
-                }}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               />
+              Đăng nhập
             </a>
             <a href="#!" className={styles.signUpButton}>
-              <ShoppingCartOutlined type="shopping" />
+              <ShoppingCartOutlined />
               Giỏ hàng
             </a>
           </div>
         </div>
+        <ul className={styles.mainMenu}>
+          <li>
+            <a href="">
+              <i>
+                <img
+                  src="https://cdn.tgdd.vn/content/phonne-24x24.png"
+                  alt=""
+                />
+              </i>
+              <span>Điện thoại</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img
+                  src="https://cdn.tgdd.vn/content/laptop-24x24.png"
+                  alt=""
+                />
+              </i>
+              <span>Laptop</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img
+                  src="https://cdn.tgdd.vn/content/phu-kien-24x24.png"
+                  alt=""
+                />
+              </i>
+              <span>Phụ kiện</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img
+                  src="https://cdn.tgdd.vn/content/smartwatch-24x24.png"
+                  alt=""
+                />
+              </i>
+              <span>Smartwatch</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img src="https://cdn.tgdd.vn/content/watch-24x24.png" alt="" />
+              </i>
+              <span>Đồng hồ</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img
+                  src="https://cdn.tgdd.vn/content/tablet-24x24.png"
+                  alt=""
+                />
+              </i>
+              <span>Tablet</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img
+                  src="https://cdn.tgdd.vn/content/may-cu-24x24.png"
+                  alt=""
+                />
+              </i>
+              <span>Máy cũ,Thu cũ</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img src="https://cdn.tgdd.vn/content/PC-24x24.png" alt="" />
+              </i>
+              <span>PC, Máy in</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img src="https://cdn.tgdd.vn/content/sim-24x24.png" alt="" />
+              </i>
+              <span>Sim, Thẻ C</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i>
+                <img
+                  src="https://cdn.tgdd.vn/content/tien-ich-24x24.png"
+                  alt=""
+                />
+              </i>
+              <span>Dịch vụ tiện ích</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   );

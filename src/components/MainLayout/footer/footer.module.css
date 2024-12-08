@@ -1,87 +1,59 @@
-.footer {
-  padding: 96px 135px 0;
-  background: #2e2100;
-  font-size: 1.1rem;
-}
-
 .mainContent {
-  max-width: 1170px;
-  margin: 0 auto;
-}
-
-.row {
+  width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: calc(100% - 48px); */
+  padding-top: 20px;
+  padding-bottom: 10px;
   display: flex;
-  padding-bottom: 38px;
-  border-bottom: 1px solid #59554b;
+  font: 14px / 18px Arial, Helvetica, sans-serif;
+  color: #333;
+  justify-content: space-between;
 }
 
-.column {
-  width: 21.6%;
+.listContent {
+  line-height: 21px;
+  padding-top: 10px;
 }
 
-.firstColumn {
-  width: 35%;
-}
-
-.desc {
-  max-width: 267px;
-  margin-top: 18px;
-  font-size: 1.1rem;
-  line-height: 1.86;
-  color: #bfbcb2;
-}
-
-.socials {
-  display: flex;
-  gap: 18px;
-  margin-top: 18px;
-}
-
-.title {
-  display: inline-block;
-  padding: 0 48px 14px 0;
-  border-bottom: 1px solid #59554b;
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.75;
-  color: #ffffff;
-}
-
-.list {
-  margin-top: 48px;
-}
-
-.listItem {
-  display: inline-block;
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-  line-height: 1.86;
-  color: #bfbcb2;
-}
-
-.listStrong {
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.copyright {
-  padding: 28px 0;
-}
-
-.copyrightText {
-  font-size: 1.1rem;
-  line-height: 1.86;
-  text-align: center;
-  color: #807d74;
-}
-
-.link {
+.listContent a {
+  color: #2f80ed;
+  font-weight: bold;
   text-decoration: none;
-  color: #bfbcb2;
-  transition: color 0.3s ease;
+  transition: 0.2s;
 }
 
-.socialIcon {
-  width: 30px;
-  height: 30px;
+.col {
+  width: 30%;
+  float: left;
+}
+
+.listMenu {
+  margin-top: 10px;
+}
+.listMenu li {
+  padding-top: 10px;
+  margin-left: -40px;
+}
+
+.listMenu li a {
+  text-decoration: none;
+  transition: 0.2s;
+  color: #333;
+  line-height: 21px;
+  padding-left: -40px;
+}
+.copyright {
+  background-color: #f1f1f1;
+}
+
+.copyright p {
+  width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: calc(100% - 48px); */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #666;
+  font-size: 12px;
 }

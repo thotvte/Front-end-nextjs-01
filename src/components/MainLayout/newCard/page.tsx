@@ -35,7 +35,7 @@ const News: React.FC = () => {
     <div
       className="main-content"
       style={{
-        marginTop: "20px",
+        marginTop: "20px ",
         borderRadius: "15px",
         background: "#FFFFFF",
         height: "300px",

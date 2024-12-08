@@ -1,68 +1,24 @@
-.header {
-  height: 100px;
-  font-size: 1.4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #ffd500;
-}
-
-.body {
-  display: flex;
-  align-items: center;
-  padding: 36px 0 8px;
-}
-/* Styles cho phần nav */
-.nav {
-  display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  gap: 20px;
-}
-
-.nav ul {
-  display: flex;
-}
-
-/* Styles cho các liên kết trong menu */
-.link {
-  display: flex;
-  color: #fff;
-  font-weight: 400;
-  transition: color 0.3s ease;
-  background-color: #7e161c;
-  border-radius: 30px;
-  padding: 5px 20px;
-  text-align: center;
-  gap: 10px;
-}
-
 .search {
-  width: 350px;
+  width: 550px;
   margin-right: 50px;
-}
-
-.link:hover {
-  opacity: 0.9;
 }
 
 /* Styles cho nút "Sign Up" */
 .signUpButton {
   display: flex;
   padding: 8px 12px;
-  background-color: #eaeaea;
   border-radius: 25px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
   gap: 10px;
+  font-size: 1.5rem; /* Kích thước chữ cho các mục menu */
+  font-weight: 500;
+  color: #333;
 }
 
 .signUpButton:hover {
-  opacity: 0.8;
+  background-color: #ffee99;
 }
 
 .login {
@@ -74,4 +30,45 @@
 
 .loginIcon {
   color: "#fff";
+}
+
+.mainMenu li {
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển màu */
+  border-top-left-radius: 10px; /* Góc trên bên trái */
+  border-top-right-radius: 10px;
+}
+
+.mainMenu li:hover {
+  background-color: #ffee99;
+}
+.mainMenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between; /* Giữa các phần tử theo chiều ngang */
+}
+
+.mainMenu li {
+  display: flex;
+  align-items: center; /* Căn giữa các phần tử con (hình ảnh và văn bản) theo chiều dọc */
+  margin-left: -15px;
+}
+
+.mainMenu a {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Loại bỏ gạch dưới của liên kết */
+  color: #000; /* Màu văn bản */
+}
+
+.mainMenu img {
+  margin-right: 4px; /* Khoảng cách giữa hình ảnh và văn bản */
+}
+
+.mainMenu span {
+  font-size: 1.2rem; /* Kích thước chữ cho các mục menu */
+  font-weight: 500;
 }

@@ -17,6 +17,16 @@
   justify-content: space-between;
   margin-bottom: 20px; /* Khoảng cách giữa các sản phẩm theo chiều dọc */
   flex-shrink: 0; /* Đảm bảo sản phẩm không bị co lại khi xuống dòng */
+  white-space: "nowrap";
+}
+
+.product img {
+  transition: transform 0.3s ease-in-out; /* Mượt mà khi chuyển động */
+}
+
+/* Khi hover vào sản phẩm, ảnh sẽ di chuyển lên 5px */
+.product:hover img {
+  transform: translateY(-5px); /* Di chuyển ảnh lên 5px */
 }
 
 .producttitle {
@@ -27,6 +37,11 @@
   white-space: nowrap; /* Ngừng xuống dòng */
   overflow: hidden; /* Ẩn phần văn bản thừa */
   text-overflow: ellipsis; /* Thêm dấu ba chấm khi văn bản dài */
+  cursor: pointer;
+}
+
+.product:hover h3 {
+  color: #288ad6;
 }
 
 .originalprice {
@@ -37,6 +52,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* Ẩn phần thừa và hiển thị ba chấm */
+  cursor: pointer;
 }
 
 .oldprice {
@@ -49,6 +65,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
 
 .discount {
@@ -59,6 +76,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
 
 .btn {
@@ -73,8 +91,4 @@
   border-radius: 5px;
   margin-top: 10px;
   cursor: pointer; /* Thêm hiệu ứng con trỏ khi hover */
-}
-
-.product:hover {
-  opacity: 0.8; /* Giảm độ sáng khi hover */
 }
