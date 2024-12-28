@@ -34,8 +34,8 @@ const Register = () => {
   return (
     <>
       <Header />
-      <Row justify={"center"} style={{ marginTop: "10px" }}>
-        <Col xs={24} md={16} lg={8}>
+      <Row justify={"center"} style={{ margin: "70px" }}>
+        <Col xs={24} md={16} lg={8} style={{maxWidth:'450px'}}>
           <fieldset
             style={{
               padding: "15px",
@@ -97,15 +97,8 @@ const Register = () => {
           </fieldset>
         </Col>
       </Row>
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-140px",
-          width: "100%",
-        }}
-      >
-        <Footer />
-      </div>
+
+      <Footer />
     </>
   );
 };

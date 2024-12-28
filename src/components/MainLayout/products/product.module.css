@@ -18,6 +18,7 @@
   margin-bottom: 20px; /* Khoảng cách giữa các sản phẩm theo chiều dọc */
   flex-shrink: 0; /* Đảm bảo sản phẩm không bị co lại khi xuống dòng */
   white-space: "nowrap";
+  cursor: pointer;
 }
 
 .product img {
@@ -32,7 +33,7 @@
 .producttitle {
   color: #1d2939;
   margin: 10px 5px; /* Thêm khoảng cách cho phần tiêu đề */
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   white-space: nowrap; /* Ngừng xuống dòng */
   overflow: hidden; /* Ẩn phần văn bản thừa */
@@ -90,5 +91,14 @@
   background-color: #f1f8fe;
   border-radius: 5px;
   margin-top: 10px;
-  cursor: pointer; /* Thêm hiệu ứng con trỏ khi hover */
+  cursor: pointer; 
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.btn:hover{
+  opacity: 0.9;
+  transition: transform 0.3s ease-in-out;
+  background-color: #FCEBA1;
 }

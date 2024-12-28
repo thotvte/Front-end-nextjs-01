@@ -26,6 +26,7 @@ const Discount = () => {
             display: "flex",
             justifyContent: "center",
             backgroundColor: "#FFFFFF",
+            borderRadius: "10px",
           }}
         >
           <Image

@@ -10,6 +10,7 @@ import Icon, {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Input } from "antd";
+import Link from "next/link";
 
 const { Search } = Input;
 
@@ -48,17 +49,17 @@ const Header = () => {
           </nav>
 
           <div className={styles.login}>
-            <a href="/auth/login" className={styles.signUpButton}>
+            <Link  href="/auth/login" className={styles.signUpButton}>
               <LoginOutlined
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               />
               Đăng nhập
-            </a>
-            <a href="#!" className={styles.signUpButton}>
+            </Link >
+            <Link href="#!" className={styles.signUpButton}>
               <ShoppingCartOutlined />
               Giỏ hàng
-            </a>
+            </Link>
           </div>
         </div>
         <ul className={styles.mainMenu}>

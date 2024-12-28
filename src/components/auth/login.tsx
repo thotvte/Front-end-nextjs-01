@@ -15,7 +15,6 @@ const Login = () => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userEmail, setUserEmail] = useState("");
-
   const [changePassword, setChangePassword] = useState(false);
 
   const onFinish = async (values: any) => {
@@ -39,13 +38,12 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div style={{ position: "relative" }}>
-        <Header />
-      </div>
-      <div style={{ height: "100%" }}>
-        <Row justify={"center"} style={{ marginTop: "10px" }}>
-          <Col xs={24} md={16} lg={8}>
+    <>
+      <Header />
+
+      <div style={{ height: "500px" }}>
+        <Row justify={"center"} style={{ margin: "70px" }}>
+          <Col xs={24} md={16} lg={8} style={{maxWidth:'450px'}}>
             <fieldset
               style={{
                 padding: "15px",
@@ -125,16 +123,9 @@ const Login = () => {
           setIsModalOpen={setChangePassword}
         />
       </div>
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-50px",
-          width: "100%",
-        }}
-      >
-        <Footer />
-      </div>
-    </div>
+
+      <Footer />
+    </>
   );
 };
 

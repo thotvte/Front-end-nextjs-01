@@ -6,6 +6,7 @@ import linkedin from "../../assets/icons/Linkedin.svg";
 import facebook from "../../assets/icons/Facebook.svg";
 import twitter from "../../assets/icons/twitter.svg";
 import instagram from "../../assets/icons/instagram.svg";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
@@ -59,13 +60,13 @@ const Footer: React.FC = () => {
               <a href="#">Lịch sữ mua hàng</a>
             </li>
             <li>
-              <a href="#">DV vệ sinh máy lạnh</a>
+              <Link href="#">DV vệ sinh máy lạnh</Link>
             </li>
             <li>
-              <a href="#">Tìm hiểu về mua trả chậm</a>
+              <Link href="#">Tìm hiểu về mua trả chậm</Link>
             </li>
             <li>
-              <a href="#">Chính sách bảo hành</a>
+              <Link href="#">Chính sách bảo hành</Link>
             </li>
           </ul>
         </div>
