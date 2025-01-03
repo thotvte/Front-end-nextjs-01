@@ -49,7 +49,9 @@ const ProductItem = ({
         </div>
       </Link>
 
-      <p className={styles.btn}>Mua ngay</p>
+      <Link href={"/cart"}>
+        <p className={styles.btn}>Mua ngay</p>
+      </Link>
     </div>
   );
 };

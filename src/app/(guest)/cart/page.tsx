@@ -1,5 +1,12 @@
+"use client"; // Đánh dấu component này là Client Component
+import Cart from "@/components/MainLayout/cart/page";
+
 const CartPage = () => {
-  return <></>;
+  return (
+    <>
+      <Cart />
+    </>
+  );
 };
 
 export default CartPage;
