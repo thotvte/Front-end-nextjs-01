@@ -22,17 +22,19 @@ const ProductItem = ({
 }: ProductProps) => {
   return (
     <div className={styles.product}>
-      <Image
-        src={image}
-        alt="product"
-        width={168}
-        height={154}
-        style={{
-          cursor: "pointer",
-          margin: "5px 1px",
-          borderRadius: "5px",
-        }}
-      />
+      <Link href={"/info/productinfo"}>
+        <Image
+          src={image}
+          alt="product"
+          width={168}
+          height={154}
+          style={{
+            cursor: "pointer",
+            margin: "5px 1px",
+            borderRadius: "5px",
+          }}
+        />
+      </Link>
 
       <Link href={"/info/productinfo"}>
         <h3 className={styles.producttitle}>{title}</h3>

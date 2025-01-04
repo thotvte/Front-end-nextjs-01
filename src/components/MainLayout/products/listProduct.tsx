@@ -13,6 +13,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -21,6 +22,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -29,6 +31,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -37,6 +40,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -45,6 +49,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -53,6 +58,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -61,6 +67,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -69,6 +76,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -77,6 +85,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -85,6 +94,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -93,6 +103,7 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
   },
   {
     id: 1,
@@ -101,14 +112,364 @@ const products = [
     oldPrice: "25.000.000 VNĐ",
     discount: 20,
     image: "/assets/imgs/realme.jpg",
+    category: "Điện Thoai",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/iphone.jpg",
+    category: "Apple",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/laptop.jpg",
+    category: "Laptop",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/phukien.jpg",
+    category: "Phụ Kiện",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/phukien.jpg",
+    category: "Phụ Kiện",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/phukien.jpg",
+    category: "Phụ Kiện",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
+  },
+  {
+    id: 1,
+    title: "Điện thoại Samsung S21",
+    originalPrice: "20.000.000 VNĐ",
+    oldPrice: "25.000.000 VNĐ",
+    discount: 20,
+    image: "/assets/imgs/dongho.jpg",
+    category: "Đồng Hồ",
   },
 ];
 
-const ListProduct: React.FC = () => {
+interface ListProductProps {
+  selectedCategory: string; // Nhận category đã chọn
+}
+
+const ListProduct: React.FC<ListProductProps> = ({ selectedCategory }) => {
+  const filteredProducts = products.filter(
+    (product) => product.category === selectedCategory
+  );
+
+  const visibleProducts = filteredProducts.slice(0, 12);
   return (
-    <div>
+    <div style={{ maxHeight: "783px", overflow: "hidden" }}>
       <div className={styles.listproduct}>
-        {products.map((product) => (
+        {visibleProducts.map((product) => (
           <Product
             key={product.id} // Sử dụng id duy nhất cho key
             title={product.title}

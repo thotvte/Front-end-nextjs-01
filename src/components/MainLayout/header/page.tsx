@@ -9,7 +9,7 @@ import Icon, {
   MenuOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
-import { Input } from "antd";
+import { Button, Dropdown, Input, MenuProps } from "antd";
 import Link from "next/link";
 
 const { Search } = Input;
@@ -24,6 +24,73 @@ const Header = () => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
+
+  const items: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          Sạc dự phòng
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Sạc, cáp
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.luohanacademy.com"
+        >
+          Ốp lưng điện thoại
+        </a>
+      ),
+    },
+  ];
+
+  const old: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          Máy cũ giá rẻ
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Thu cũ đổi mới
+        </a>
+      ),
+    },
+  ];
+
   return (
     <div className="header fixed">
       <div className="main-content">
@@ -49,13 +116,13 @@ const Header = () => {
           </nav>
 
           <div className={styles.login}>
-            <Link  href="/auth/login" className={styles.signUpButton}>
+            <Link href="/auth/login" className={styles.signUpButton}>
               <LoginOutlined
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               />
               Đăng nhập
-            </Link >
+            </Link>
             <Link href="#!" className={styles.signUpButton}>
               <ShoppingCartOutlined />
               Giỏ hàng
@@ -86,14 +153,28 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a href="">
-              <i>
-                <img
-                  src="https://cdn.tgdd.vn/content/phu-kien-24x24.png"
-                  alt=""
-                />
-              </i>
-              <span>Phụ kiện</span>
+            <a href="#!">
+              <Dropdown
+                menu={{ items: items }}
+                placement="bottomRight"
+                arrow={{ pointAtCenter: true }}
+              >
+                <Button
+                  style={{
+                    border: "none",
+                    background: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  <i>
+                    <img
+                      src="https://cdn.tgdd.vn/content/phu-kien-24x24.png"
+                      alt=""
+                    />
+                  </i>
+                  <span>Phụ kiện</span>
+                </Button>
+              </Dropdown>
             </a>
           </li>
           <li>
@@ -128,13 +209,27 @@ const Header = () => {
           </li>
           <li>
             <a href="">
-              <i>
-                <img
-                  src="https://cdn.tgdd.vn/content/may-cu-24x24.png"
-                  alt=""
-                />
-              </i>
-              <span>Máy cũ,Thu cũ</span>
+              <Dropdown
+                menu={{ items: old }}
+                placement="bottomRight"
+                arrow={{ pointAtCenter: true }}
+              >
+                <Button
+                  style={{
+                    border: "none",
+                    background: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  <i>
+                    <img
+                      src="https://cdn.tgdd.vn/content/may-cu-24x24.png"
+                      alt=""
+                    />
+                  </i>
+                  <span>Máy cũ,Thu cũ</span>
+                </Button>
+              </Dropdown>
             </a>
           </li>
           <li>

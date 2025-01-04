@@ -1,43 +1,11 @@
 import React, { useState } from "react";
 import styles from "../styles.module.css";
 
-// Component Tab để tái sử dụng
-interface TabProps {
-  index: number;
-  label: string;
-  selectedIndex: number | null;
-  onClick: (index: number) => void;
-}
-
-const Tab: React.FC<TabProps> = ({ index, label, selectedIndex, onClick }) => {
-  const isSelected = selectedIndex === index;
-
-  return (
-    <h2
-      onClick={() => onClick(index)}
-      style={{
-        display: "flex",
-        border: "1px solid #e5e5e5",
-        justifyContent: "center",
-        width: "245px",
-        padding: "10px 0",
-        borderRadius: "12px",
-        cursor: "pointer",
-        color: isSelected ? "#2A83E9" : "#344054",
-        backgroundColor: isSelected ? "#F1F8FE" : "initial",
-      }}
-    >
-      {label}
-    </h2>
-  );
-};
-
 const Specifications: React.FC = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [action, setAction] = useState(true);
 
-  // Hàm xử lý khi nhấn vào <h2>
-  const handleClick = (index: number): void => {
-    setSelectedIndex(index); // Cập nhật chỉ số phần tử được nhấn
+  const handleClick = (index: boolean) => {
+    setAction(index);
   };
 
   return (
@@ -50,6 +18,7 @@ const Specifications: React.FC = () => {
       }}
     >
       <div
+        className=""
         style={{
           color: "#344054",
           textAlign: "center",
@@ -62,109 +31,131 @@ const Specifications: React.FC = () => {
           paddingTop: "20px",
         }}
       >
-        {/* Tái sử dụng component Tab */}
-        <Tab
-          index={1}
-          label="Thông số kỹ thuật"
-          selectedIndex={selectedIndex}
-          onClick={handleClick}
-        />
-        <Tab
-          index={2}
-          label="Bài viết đánh giá"
-          selectedIndex={selectedIndex}
-          onClick={handleClick}
-        />
+        <h2
+          className={`${styles.tabSpec} ${action ? styles.actionCick : ""}`}
+          onClick={() => handleClick(true)}
+        >
+          Thông số kỹ thuật
+        </h2>
+        <h2
+          className={`${styles.tabSpec} ${!action ? styles.actionCick : ""}`}
+          onClick={() => handleClick(false)}
+        >
+          Bài viết đánh giá
+        </h2>
       </div>
       <div className={styles.specifications}>
         <div className={styles.boxSpecifi}>
-          <ul className={styles.textSpecifi}>
-            <li>
-              <aside>
-                <strong>Model:</strong>
-              </aside>
-              <aside>
-                <span>CD350 15539</span>
-              </aside>
-            </li>
+          {action && (
+            <ul className={styles.textSpecifi}>
+              <li>
+                <aside>
+                  <strong>Model:</strong>
+                </aside>
+                <aside>
+                  <span>CD350 15539</span>
+                </aside>
+              </li>
 
-            <li>
-              <aside>
-                <strong>Chức năng:</strong>
-              </aside>
-              <aside>
-                <span>Sạc</span>
-              </aside>
-            </li>
+              <li>
+                <aside>
+                  <strong>Chức năng:</strong>
+                </aside>
+                <aside>
+                  <span>Sạc</span>
+                </aside>
+              </li>
 
-            <li>
-              <aside>
-                <strong>Đầu ra:</strong>
-              </aside>
-              <aside>
-                <span>Type C 25W</span>
-              </aside>
-            </li>
+              <li>
+                <aside>
+                  <strong>Đầu ra:</strong>
+                </aside>
+                <aside>
+                  <span>Type C 25W</span>
+                </aside>
+              </li>
 
-            <li>
-              <aside>
-                <strong>Dòng sạc tối đa:</strong>
-              </aside>
-              <aside>
-                <span>25 W</span>
-              </aside>
-            </li>
+              <li>
+                <aside>
+                  <strong>Dòng sạc tối đa:</strong>
+                </aside>
+                <aside>
+                  <span>25 W</span>
+                </aside>
+              </li>
 
-            <li>
-              <aside>
-                <strong>Kích thước:</strong>
-              </aside>
-              <aside>
-                <span>Dài 6.69 cm - Ngang 3.8 cm - Cao 2.2 cm</span>
-              </aside>
-            </li>
+              <li>
+                <aside>
+                  <strong>Kích thước:</strong>
+                </aside>
+                <aside>
+                  <span>Dài 6.69 cm - Ngang 3.8 cm - Cao 2.2 cm</span>
+                </aside>
+              </li>
 
-            <li>
-              <aside>
-                <strong>Công nghệ/Tiện ích:</strong>
-              </aside>
-              <aside>
-                <a className={styles.tzLink} href="#!" target="_blank">
-                  Công nghệ GaN
-                </a>
-                <a className={styles.tzLink} href="#!" target="_blank">
-                  Power Delivery
-                </a>
-              </aside>
-            </li>
+              <li>
+                <aside>
+                  <strong>Công nghệ/Tiện ích:</strong>
+                </aside>
+                <aside>
+                  <a className={styles.tzLink} href="#!" target="_blank">
+                    Công nghệ GaN
+                  </a>
+                  <a className={styles.tzLink} href="#!" target="_blank">
+                    Power Delivery
+                  </a>
+                </aside>
+              </li>
 
-            <li>
-              <aside>
-                <strong>Sản xuất tại:</strong>
-              </aside>
-              <aside>
-                <span>Việt Nam</span>
-              </aside>
-            </li>
+              <li>
+                <aside>
+                  <strong>Sản xuất tại:</strong>
+                </aside>
+                <aside>
+                  <span>Việt Nam</span>
+                </aside>
+              </li>
 
-            <li>
-              <aside>
-                <strong>Thương hiệu của:</strong>
-              </aside>
-              <aside>
-                <span>Hàn Quốc</span>
-              </aside>
-            </li>
+              <li>
+                <aside>
+                  <strong>Thương hiệu của:</strong>
+                </aside>
+                <aside>
+                  <span>Hàn Quốc</span>
+                </aside>
+              </li>
 
-            <li>
-              <aside>
-                <strong>Hãng:</strong>
-              </aside>
-              <aside>
-                <span>Samsung</span>
-              </aside>
-            </li>
-          </ul>
+              <li>
+                <aside>
+                  <strong>Hãng:</strong>
+                </aside>
+                <aside>
+                  <span>Samsung</span>
+                </aside>
+              </li>
+            </ul>
+          )}
+
+          {!action && (
+            <ul className={styles.textSpecifi}>
+              <li>
+                • Với kích thước chỉ 2.8 x 2.8 x 3.6 cm, sản phẩm dễ dàng đồng
+                hành cùng bạn trong mọi chuyến đi, từ túi xách đến góc làm việc
+                gọn gàng.
+              </li>
+              <li>
+                • Ngoài ra, adapter sạc 30W này cũng sở hữu chấu sạc có thể gấp
+                gọn, đem lại sự tiện lợi khi mang theo củ sạc đi xa hoặc để
+                trong nơi có không gian hẹp.
+              </li>
+              <li>
+                • Công nghệ Power Delivery giúp adapter sạc Xmobile cùng công
+                suất sạc tối đa 30W, đáp ứng linh hoạt các nhu cầu sạc của bạn.
+                Từ sạc nhanh điện thoại, máy tính bảng đến các thiết bị hỗ trợ
+                cổng Type C khác.
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </div>

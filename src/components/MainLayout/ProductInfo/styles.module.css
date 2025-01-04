@@ -16,6 +16,10 @@
   overflow: hidden;
 }
 
+.textDetail {
+  font-size: 14px;
+}
+
 .textSpecifi li {
   display: block;
   overflow: hidden;
@@ -529,7 +533,7 @@
   float: left;
 }
 
-.divbRight{
+.divbRight {
   padding-left: 26px;
 }
 
@@ -544,11 +548,10 @@
   color: #4a90e2;
 }
 
-.deliverytime{
-
+.deliverytime {
 }
 
-.blue{
+.blue {
   color: #2a83e9;
   margin-bottom: 5px;
   line-height: 1.5;
@@ -557,17 +560,16 @@
   padding-bottom: 10px;
 }
 
-
 .onoffdelibox {
   text-decoration: none;
   color: #2f80ed;
-    display: inline-block;
-    border-radius: 4px;
-    position: relative;
-    line-height: 1;
-    margin-top: 5px;
-    text-decoration: unde;
-    gap: 5px;
+  display: inline-block;
+  border-radius: 4px;
+  position: relative;
+  line-height: 1;
+  margin-top: 5px;
+  text-decoration: unde;
+  gap: 5px;
 }
 
 .loyalty {
@@ -591,7 +593,7 @@
   color: #2a83e9;
   padding: 15px 10px;
   float: left;
-  border: 1px solid #2a83e9;;
+  border: 1px solid #2a83e9;
   border-radius: 8px;
   text-align: center;
 }
@@ -599,19 +601,18 @@
 .btnBuynow2 {
   text-align: center;
   width: 49%;
-  background-color: #FC7600;
+  background-color: #fc7600;
   color: white;
   padding: 15px 10px;
   float: left;
-  border: 1px solid #FC7600;
+  border: 1px solid #fc7600;
   border-radius: 8px;
-
 }
 
 .callorder {
   line-height: 17px;
-    margin-bottom: 10px;
-    font-size: 14px;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .callorder a {
@@ -623,4 +624,57 @@
   display: flex;
   margin-bottom: 10px;
   gap: 10px;
+}
+
+.tabSpec {
+  width: 40%;
+  border: 1px solid #e5e5e5;
+  padding: 10px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.actionCick {
+  width: 40%;
+  border: 1px solid #bbddfd;
+  padding: 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  color: #2a83e9;
+  background-color: #f1f8fe;
+}
+
+
+.sile {
+  display: flex;            
+  justify-content: center;    
+  margin: 0 auto;           
+  padding-top: 20px;
+  gap: 20px;
+}
+
+.next{
+  font-size: 20px;
+}
+
+.buttonImg{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.buttonAction{
+  margin-top: 20px;
+  height: 40px;
+  width: 70px;
+  padding: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border: 1px solid #bbddfd;
+  border-radius: 5px;
+}
+
+.buttonAction:hover{
+  background-color: #b8d1e9;
 }

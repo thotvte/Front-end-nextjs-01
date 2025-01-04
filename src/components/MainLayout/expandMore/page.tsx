@@ -8,6 +8,7 @@ const ExpandMore = () => {
         color: "#2A83E9",
         justifyContent: "center",
         cursor: "pointer",
+        paddingBottom: "10px",
       }}
     >
       Xem thêm sản phẩm

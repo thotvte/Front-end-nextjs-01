@@ -1,6 +1,6 @@
 .listproduct {
   display: flex;
-  flex-wrap: wrap; /* Cho phép các phần tử tự động xuống dòng khi không đủ không gian */
+  flex-wrap: wrap; 
   gap: 20px; /* Khoảng cách giữa các sản phẩm */
   justify-content: flex-start; /* Căn trái cho các phần tử */
   margin-top: 15px;

@@ -1,6 +1,5 @@
 "use client";
 import styles from "../cart.module.css";
-
 import Image from "next/image";
 import logo from "../../../../../public/assets/imgs/location.png";
 import xaomi from "../../../../../public/assets/imgs/xiaomi.jpg";
@@ -39,21 +38,7 @@ const ChoosedeliveryTop = () => {
           <div className={styles.choosedeliveryTop}>
             <label
               className={`${styles.optionText} ${
-                action ? styles.selected1 : ""
-              }`}
-            >
-              <input
-                type="radio"
-                name="deliveryOption"
-                checked={action}
-                onChange={() => handleAction(true)}
-              />
-              Giao tận nơi
-            </label>
-
-            <label
-              className={`${styles.optionText} ${
-                !action ? styles.selected2 : ""
+                !action ? styles.selected1 : ""
               }`}
             >
               <input
@@ -61,6 +46,20 @@ const ChoosedeliveryTop = () => {
                 name="deliveryOption"
                 checked={!action}
                 onChange={() => handleAction(false)}
+              />
+              Giao tận nơi
+            </label>
+
+            <label
+              className={`${styles.optionText} ${
+                action ? styles.selected2 : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="deliveryOption"
+                checked={action}
+                onChange={() => handleAction(true)}
               />
               Nhận tại siêu thị
             </label>
@@ -71,7 +70,7 @@ const ChoosedeliveryTop = () => {
         <div className={styles.cartMain}>
           <div className={styles.middleCart}>
             <div className={styles.cartFragment}>
-              {action && (
+              {!action && (
                 <div className={styles.location1}>
                   <div>
                     <div>
@@ -99,7 +98,7 @@ const ChoosedeliveryTop = () => {
                 </div>
               )}
 
-              {!action && (
+              {action && (
                 <div className={styles.location2}>
                   <span className={styles.titlemiddcart2}>
                     <ShopOutlined /> Vui lòng chọn siêu thị nhận hàng
