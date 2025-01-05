@@ -5,6 +5,7 @@ import styles from "./header.module.css";
 import "../../../app/globals.css";
 import logo from "../../../../public/assets/imgs/logo.svg";
 import Icon, {
+  DownOutlined,
   LoginOutlined,
   MenuOutlined,
   ShoppingCartOutlined,
@@ -90,6 +91,156 @@ const Header = () => {
       ),
     },
   ];
+  const pc: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          Máy tính để bàn
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Màn hình máy tính
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Máy chơi game
+        </a>
+      ),
+    },
+    {
+      key: "4",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Mực in
+        </a>
+      ),
+    },
+    {
+      key: "5",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Máy in
+        </a>
+      ),
+    },
+  ];
+  const sim: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          Sim, Thẻ cào
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          eSim du lịch
+        </a>
+      ),
+    },
+  ];
+  const dvti: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          Đóng tiền tra góp
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Vay tiền mặt
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Mua gói Data 3G, 4G
+        </a>
+      ),
+    },
+    {
+      key: "4",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Thẻ cào điện thoại
+        </a>
+      ),
+    },
+    {
+      key: "5",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Mua gói truyền hình
+        </a>
+      ),
+    },
+  ];
 
   return (
     <div className="header fixed">
@@ -130,7 +281,7 @@ const Header = () => {
           </div>
         </div>
         <ul className={styles.mainMenu}>
-          <li>
+          <li className={styles.menuItem}>
             <a href="">
               <i>
                 <img
@@ -141,7 +292,7 @@ const Header = () => {
               <span>Điện thoại</span>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItem}>
             <a href="">
               <i>
                 <img
@@ -152,7 +303,7 @@ const Header = () => {
               <span>Laptop</span>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItems}>
             <a href="#!">
               <Dropdown
                 menu={{ items: items }}
@@ -172,12 +323,14 @@ const Header = () => {
                       alt=""
                     />
                   </i>
-                  <span>Phụ kiện</span>
+                  <span>
+                    Phụ kiện <DownOutlined style={{ fontSize: "10px" }} />
+                  </span>
                 </Button>
               </Dropdown>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItem}>
             <a href="">
               <i>
                 <img
@@ -188,7 +341,7 @@ const Header = () => {
               <span>Smartwatch</span>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItem}>
             <a href="">
               <i>
                 <img src="https://cdn.tgdd.vn/content/watch-24x24.png" alt="" />
@@ -196,7 +349,7 @@ const Header = () => {
               <span>Đồng hồ</span>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItem}>
             <a href="">
               <i>
                 <img
@@ -207,7 +360,7 @@ const Header = () => {
               <span>Tablet</span>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItems}>
             <a href="">
               <Dropdown
                 menu={{ items: old }}
@@ -227,36 +380,93 @@ const Header = () => {
                       alt=""
                     />
                   </i>
-                  <span>Máy cũ,Thu cũ</span>
+                  <span>
+                    Máy cũ,Thu cũ <DownOutlined style={{ fontSize: "10px" }} />
+                  </span>
                 </Button>
               </Dropdown>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItems}>
             <a href="">
-              <i>
-                <img src="https://cdn.tgdd.vn/content/PC-24x24.png" alt="" />
-              </i>
-              <span>PC, Máy in</span>
+              <Dropdown
+                menu={{ items: pc }}
+                placement="bottomRight"
+                arrow={{ pointAtCenter: true }}
+              >
+                <Button
+                  style={{
+                    border: "none",
+                    background: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  <i>
+                    <img
+                      src="https://cdn.tgdd.vn/content/PC-24x24.png"
+                      alt=""
+                    />
+                  </i>
+                  <span>
+                    PC, Máy in <DownOutlined style={{ fontSize: "10px" }} />
+                  </span>
+                </Button>
+              </Dropdown>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItems}>
             <a href="">
-              <i>
-                <img src="https://cdn.tgdd.vn/content/sim-24x24.png" alt="" />
-              </i>
-              <span>Sim, Thẻ Cào</span>
+              <Dropdown
+                menu={{ items: sim }}
+                placement="bottomRight"
+                arrow={{ pointAtCenter: true }}
+              >
+                <Button
+                  style={{
+                    border: "none",
+                    background: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  <i>
+                    <img
+                      src="https://cdn.tgdd.vn/content/sim-24x24.png"
+                      alt=""
+                    />
+                  </i>
+                  <span>
+                    Sim, Thẻ Cào <DownOutlined style={{ fontSize: "10px" }} />
+                  </span>
+                </Button>
+              </Dropdown>
             </a>
           </li>
-          <li>
+          <li className={styles.menuItems}>
             <a href="">
-              <i>
-                <img
-                  src="https://cdn.tgdd.vn/content/tien-ich-24x24.png"
-                  alt=""
-                />
-              </i>
-              <span>Dịch vụ tiện ích</span>
+              <Dropdown
+                menu={{ items: dvti }}
+                placement="bottomRight"
+                arrow={{ pointAtCenter: true }}
+              >
+                <Button
+                  style={{
+                    border: "none",
+                    background: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  <i>
+                    <img
+                      src="https://cdn.tgdd.vn/content/tien-ich-24x24.png"
+                      alt=""
+                    />
+                  </i>
+                  <span>
+                    Dịch vụ tiện ích{" "}
+                    <DownOutlined style={{ fontSize: "10px" }} />
+                  </span>
+                </Button>
+              </Dropdown>
             </a>
           </li>
         </ul>

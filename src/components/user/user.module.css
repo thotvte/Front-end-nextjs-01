@@ -1,0 +1,136 @@
+.container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  width: 800px;
+  margin: 20px auto;
+}
+
+.tabs {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.ant-tabs-tabpane {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 370px;
+}
+
+.orderImage {
+  border-radius: 8px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card .ant-typography {
+  font-weight: 600;
+}
+
+.editButton {
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: #4096ff;
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.editButton:hover {
+  background-color: #1e70d6;
+}
+.ant-tabs-tab {
+  font-weight: bold;
+}
+
+.ant-tabs-tabpane {
+  padding: 20px;
+}
+
+.ant-list {
+  overflow-y: auto;
+}
+
+.tabContent {
+  height: 320px;
+  overflow-y: auto;
+
+}
+
+
+.info-container {
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px; 
+  margin: 20px auto; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.info-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #34495e; 
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+
+.info-container p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #7f8c8d; 
+  line-height: 1.6;
+}
+
+
+.info-container p strong {
+  color: #2c3e50;
+}
+
+
+.editButton {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #4096ff;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 100%;
+  max-width: 200px; 
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.editButton:hover {
+  background-color: #1e70d6;
+  cursor: pointer;
+}
+
+.info-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+
+.infoContainer P{
+  padding-top: 20px;
+}

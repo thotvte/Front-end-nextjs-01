@@ -32,7 +32,9 @@
   color: "#fff";
 }
 
-.mainMenu li {
+
+
+.menuItem{
   padding: 5px 10px;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển màu */
@@ -40,9 +42,18 @@
   border-top-right-radius: 10px;
 }
 
-.mainMenu li:hover {
-  background-color: #ffee99;
+.menuItems{
+  border-top-left-radius: 10px; /* Góc trên bên trái */
+  border-top-right-radius: 10px;
+
 }
+
+
+.mainMenu li:hover {
+  background-color: #ffee99;  
+}
+
+
 .mainMenu {
   list-style: none;
   padding: 0;
