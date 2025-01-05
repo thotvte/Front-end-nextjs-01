@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import Soc from "../../assets/icons/soc.png";
-import Live from "../../assets/icons/live.png";
-import Ip from "../../assets/icons/ip.png";
+import Soc from "../../../../public/assets/icons/soc.png";
+import Live from "../../../../public/assets/icons/Live.png";
+import Ip from "../../../../public/assets/icons/ip.png";
 import Tgdd from "../../assets/imgs/tgdd.png";
 import styles from "./discount.module.css";
 import "../../../app/globals.css";
