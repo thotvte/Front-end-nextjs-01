@@ -1,136 +1,221 @@
 "use client";
-
-import React from "react";
-import { Tabs, List, Card, Button, Typography } from "antd";
-import {
-  AndroidOutlined,
-  AppleOutlined,
-  AuditOutlined,
-  InboxOutlined,
-} from "@ant-design/icons";
+import Image from "next/image";
 import styles from "./user.module.css";
+import React, { useState } from "react";
+import type { DatePickerProps, RadioChangeEvent } from "antd";
+import { DatePicker, Radio, Space } from "antd";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+dayjs.extend(customParseFormat);
+const { RangePicker } = DatePicker;
+const dateFormat = "YYYY/MM/DD";
+const weekFormat = "MM/DD";
+const monthFormat = "YYYY/MM";
+import { Input, QRCode } from "antd";
+import appstore from "../../../public/assets/imgs/appstore.png";
+import googleplay from "../../../public/assets/imgs/googleplay.png";
+import {
+  EditOutlined,
+  LeftOutlined,
+  ShoppingOutlined,
+} from "@ant-design/icons";
 
-const { Title } = Typography;
+const User = () => {
+  const [value, setValue] = useState(1);
 
-const App: React.FC = () => {
-  // Mẫu dữ liệu cho đơn hàng đã mua
-  const orders = [
-    {
-      id: 1,
-      product: "Điện thoại iPhone 13",
-      price: "20.000.000 VND",
-      date: "2025-01-01",
-    },
-    {
-      id: 2,
-      product: "Laptop MacBook Pro",
-      price: "40.000.000 VND",
-      date: "2025-01-02",
-    },
-    {
-      id: 3,
-      product: "Smartwatch Apple Watch",
-      price: "8.000.000 VND",
-      date: "2025-01-03",
-    },
-  ];
-
-  const userInfo = {
-    name: "Nguyễn Văn A",
-    email: "nguyen@example.com",
-    address: "123 Đường ABC, TP.HCM",
-    phone: "0123456789",
+  const onChange = (e: RadioChangeEvent) => {
+    console.log("radio checked", e.target.value);
+    setValue(e.target.value);
   };
-
   return (
-    <div className={styles.container}>
-      <Tabs defaultActiveKey="1" className={styles.tabs}>
-        {/* Tab "Đơn hàng đã mua" */}
-
-        <Tabs.TabPane
-          tab={
-            <span style={{ display: "flex", gap: "5px", marginLeft: "10px" }}>
-              <AuditOutlined />
-              Thông tin và số địa chỉ
-            </span>
-          }
-          key="1"
-        >
-          <div className={styles.tabContent}>
-            <Card className={styles.card}>
-              <div className={styles.infoContainer}>
-                <h2>THÔNG TIN CÁ NHÂN</h2>
-                <p>
-                  <strong>Tên:</strong> {userInfo.name}
-                </p>
-                <p>
-                  <strong>Email:</strong> {userInfo.email}
-                </p>
-                <p>
-                  <strong>Số điện thoại:</strong> {userInfo.phone}
-                </p>
-                <p>
-                  <strong>Địa chỉ:</strong> {userInfo.address}
-                </p>
-                <Button type="primary" className={styles.editButton}>
-                  Chỉnh sửa thông tin
-                </Button>
-              </div>
-            </Card>
-          </div>
-        </Tabs.TabPane>
-
-        <Tabs.TabPane
-          tab={
-            <span style={{ display: "flex", gap: "5px", marginLeft: "10px" }}>
-              <InboxOutlined />
-              Đơn hàng đã mua
-            </span>
-          }
-          key="2"
-        >
-          <div className={styles.tabContent}>
-            <List
-              itemLayout="vertical"
-              size="large"
-              dataSource={orders}
-              renderItem={(order) => (
-                <List.Item
-                  key={order.id}
-                  extra={
-                    <img
-                      width={100}
-                      alt="product"
-                      src="https://via.placeholder.com/150"
-                      className={styles.orderImage}
+    <div style={{ backgroundColor: "#edf0f5" }}>
+      <div className={styles.user}>
+        <div className={styles.userTop}>
+          <div className={styles.menuLeft}>
+            <h2 className={styles.menuLeftName}>
+              Chào Anh : <b className={styles.fullName}>Trương Văn Thọ</b>
+            </h2>
+            <ul>
+              <li>
+                <a href="#!">Đơn hàng đã mua </a>
+              </li>
+              <li>
+                <a href="#!">Thông tin và sổ địa chỉ</a>
+              </li>
+            </ul>
+            <a href="#!" className={styles.btnLogout}>
+              Đăng xuất
+            </a>
+            <div className={styles.promote}>
+              <span className={styles.userPoint}>
+                Tổng điểm tích lũy: 0 điểm
+              </span>
+              <div className={styles.promoteBody}>
+                <div>
+                  <span className={styles.downloadTitle}>
+                    Tải App LESSON Quà Tặng VIP
+                  </span>
+                  <p className={styles.promoteContent}>
+                    Tích & sử dụng điểm cho khách hàng thân thiết. Sản phẩm của
+                    tập đoàn MWG. <a href="#!">Tìm hiểu thêm</a>
+                  </p>
+                </div>
+                <div className={styles.qr}>
+                  <Space>
+                    <QRCode
+                      type="canvas"
+                      value="https://www.facebook.com/tho.truongvan.2109/"
+                      style={{ width: "80px", height: "100%" }}
                     />
-                  }
-                >
-                  <List.Item.Meta
-                    title={order.product}
-                    description={`Giá: ${order.price} | Ngày mua: ${order.date}`}
+                  </Space>
+                </div>
+              </div>
+              <div className={styles.download}>
+                <a href="#!">
+                  {" "}
+                  <Image
+                    src={appstore}
+                    alt={"APP Store"}
+                    height={40}
+                    width={190}
                   />
-                </List.Item>
-              )}
-            />
+                </a>
+                <a href="#!">
+                  {" "}
+                  <Image
+                    src={googleplay}
+                    alt={"Google Play"}
+                    height={40}
+                    width={190}
+                  />
+                </a>
+              </div>
+            </div>
           </div>
-        </Tabs.TabPane>
-      </Tabs>
-      <Button
-        type="primary"
-        style={{
-          color: "blue",
-          backgroundColor: "#fff",
-          border: "1px solid blue",
-          padding: "20px ",
-          marginTop: "30px",
-          width: "100%",
-        }}
-      >
-        Đăng xuất
-      </Button>
+          {/* <div className={styles.menuRight}>
+            <div className={styles.menuTop}>
+              <h2>Đơn hàng đả mua</h2>
+
+              <RangePicker
+                style={{
+                  border: "none",
+                  backgroundColor: "transparent",
+                  padding: "0",
+                }}
+                defaultValue={[
+                  dayjs("2015/01/01", dateFormat),
+                  dayjs("2015/01/01", dateFormat),
+                ]}
+                format={dateFormat}
+              />
+            </div>
+            <div className={styles.filter}>
+              <div className={styles.filterTypeScroll}>
+                <a href="#!">Tất cả</a>
+                <a href="#!">Chờ xử lý</a>
+                <a href="#!">Đã xác nhận</a>
+                <a href="#!">Đang chuyển hàng</a>
+                <a href="#!">Đang giao hàng</a>
+                <a href="#!">Đã hủy </a>
+                <a href="#!">Thành công</a>
+              </div>
+            </div>
+            <div className={styles.listOrder}>
+              <div className={styles.notfoundList}>
+                <ShoppingOutlined
+                  style={{
+                    fontSize: "80px",
+                    color: "#94C4FC",
+                    marginBottom: "10px",
+                  }}
+                />
+                <p>Rất tiếc, không tìm thấy đơn hàng nào phù hợp</p>
+                <span>Vẫn còn rất nhiều sản phẩm đang chờ anh</span>
+                <div className={styles.groupButtonDirect}>
+                  <p>
+                    <a href="#!">Điện thoại</a>
+                  </p>
+                  <p>
+                    <a href="#!">Laptop</a>
+                  </p>
+                  <p>
+                    <a href="#!">Tablet</a>
+                  </p>
+                  <p>
+                    <a href="#!">Phụ kiện</a>
+                  </p>
+                  <p>
+                    <a href="#!">Smartwatch</a>
+                  </p>
+                </div>
+                <a href="/" className={styles.home}>
+                  <LeftOutlined /> Về trang chủ
+                </a>
+              </div>
+            </div>
+          </div> */}
+          <div className={styles.profile}>
+            <h2>Thông tin tài khoản</h2>
+            <div className={styles.profileArea}>
+              <h3>Thông tin cá nhân</h3>
+              <div className={styles.profileMain}>
+                <div className={styles.profileInfo}>
+                  <p>
+                    Anh <span id="username">Thọ Trương Văn</span> - 0932320642
+                  </p>
+                  <a href="#!">
+                    <EditOutlined />
+                    <span>Sửa</span>
+                  </a>
+                </div>
+                <div className={styles.profileInputGroup}>
+                  <div>
+                    <Radio.Group onChange={onChange} value={value}>
+                      <Radio value={1}>Anh</Radio>
+                      <Radio value={2}>Chị</Radio>
+                    </Radio.Group>
+                  </div>
+                  <div className={styles.profileInput}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <span>Họ &amp; Tên: </span>
+                      <Input
+                        placeholder="NHẬP HỌ VÀ TÊN"
+                        style={{ width: "200px" }}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <span>Số điện thoại: </span>
+                      <Input
+                        placeholder="0123456789"
+                        style={{ width: "200px" }}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.btnProfileEdit}>
+                    <a href="#!">Hủy</a>
+                    <a href="#!" style={{ color: "#F96F3A" }}>
+                      Lưu
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
-
-export default App;
+export default User;
