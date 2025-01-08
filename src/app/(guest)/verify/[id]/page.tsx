@@ -1,4 +1,4 @@
-// import Verify from "@/components/auth/verify";
+import Verify from "@/components/auth/verify";
 
 // const VerifyPage = ({ params }: { params: { id: string } }) => {
 //   const { id } = params;
@@ -10,3 +10,13 @@
 // };
 
 // export default VerifyPage;
+
+const VerifyPage = () => {
+  return (
+    <>
+      <Verify />
+    </>
+  );
+};
+
+export default VerifyPage;
