@@ -42,6 +42,11 @@
   border-radius: 4px;
 }
 
+.active  {
+  background-color: #e4e7ed;  /* Màu nền khi mục đang được chọn */
+  border-radius: 4px;
+}
+
 .btnLogout {
   text-decoration: none;
 }
@@ -226,8 +231,8 @@
 
 .profile {
   width: 720px;
-  height: 480px;
-  background-color: #288ad6;
+  /* height: 480px; */
+  /* background-color: #288ad6; */
 }
 
 .profile h2 {
@@ -297,7 +302,7 @@
 }
 
 .btnProfileEdit {
-  /* display: none; */
+  display: none;
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -307,5 +312,40 @@
 .btnProfileEdit a {
   text-decoration: none;
   color: #000;
-  font-size: 700;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.addressArea {
+  background: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 20px 0 25px 0;
+  height: auto;
+}
+
+.addressArea h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.checkDefault {
+  display: block;
+  margin: 10px 0 15px 0;
+}
+
+.button {
+  width: 342px;
+  margin: 25px auto 15px auto;
+  display: block;
+  border-radius: 3px;
+  text-align: center;
+  background-color: #f96f3a;
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
 }

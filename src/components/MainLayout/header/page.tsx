@@ -285,8 +285,10 @@ const Header = () => {
             <a href="">
               <i>
                 <img
-                  src="https://cdn.tgdd.vn/content/phonne-24x24.png"
+                  src="/assets/icons/phone.png"
                   alt=""
+                  height={24}
+                  width={24}
                 />
               </i>
               <span>Điện thoại</span>
@@ -296,8 +298,10 @@ const Header = () => {
             <a href="">
               <i>
                 <img
-                  src="https://cdn.tgdd.vn/content/laptop-24x24.png"
+                  src="/assets/icons/laptop.png"
                   alt=""
+                  height={24}
+                  width={24}
                 />
               </i>
               <span>Laptop</span>
@@ -319,8 +323,10 @@ const Header = () => {
                 >
                   <i>
                     <img
-                      src="https://cdn.tgdd.vn/content/phu-kien-24x24.png"
+                      src="/assets/icons/phukien.png"
                       alt=""
+                      height={24}
+                      width={24}
                     />
                   </i>
                   <span>
@@ -334,8 +340,10 @@ const Header = () => {
             <a href="">
               <i>
                 <img
-                  src="https://cdn.tgdd.vn/content/smartwatch-24x24.png"
+                  src="/assets/icons/smartwatch.png"
                   alt=""
+                  height={24}
+                  width={24}
                 />
               </i>
               <span>Smartwatch</span>
@@ -343,9 +351,12 @@ const Header = () => {
           </li>
           <li className={styles.menuItem}>
             <a href="">
-              <i>
-                <img src="https://cdn.tgdd.vn/content/watch-24x24.png" alt="" />
-              </i>
+              <img
+                src="/assets/icons/watch.png"
+                alt=""
+                height={24}
+                width={24}
+              />
               <span>Đồng hồ</span>
             </a>
           </li>
@@ -353,8 +364,10 @@ const Header = () => {
             <a href="">
               <i>
                 <img
-                  src="https://cdn.tgdd.vn/content/tablet-24x24.png"
+                  src="/assets/icons/tablet.png"
                   alt=""
+                  height={24}
+                  width={24}
                 />
               </i>
               <span>Tablet</span>
@@ -376,8 +389,10 @@ const Header = () => {
                 >
                   <i>
                     <img
-                      src="https://cdn.tgdd.vn/content/may-cu-24x24.png"
+                      src="/assets/icons/maycu.png"
                       alt=""
+                      height={24}
+                      width={24}
                     />
                   </i>
                   <span>
@@ -403,8 +418,10 @@ const Header = () => {
                 >
                   <i>
                     <img
-                      src="https://cdn.tgdd.vn/content/PC-24x24.png"
+                      src="/assets/icons/PC.png"
                       alt=""
+                      height={24}
+                      width={24}
                     />
                   </i>
                   <span>
@@ -430,8 +447,10 @@ const Header = () => {
                 >
                   <i>
                     <img
-                      src="https://cdn.tgdd.vn/content/sim-24x24.png"
+                      src="/assets/icons/sim.png"
                       alt=""
+                      height={24}
+                      width={24}
                     />
                   </i>
                   <span>
@@ -457,8 +476,10 @@ const Header = () => {
                 >
                   <i>
                     <img
-                      src="https://cdn.tgdd.vn/content/tien-ich-24x24.png"
+                      src="/assets/icons/tienich.png"
                       alt=""
+                      height={24}
+                      width={24}
                     />
                   </i>
                   <span>

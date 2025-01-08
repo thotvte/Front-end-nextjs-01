@@ -34,7 +34,7 @@ const ProductInfoLeft: React.FC = () => {
         </div>
         <div className={styles.buttonImg}>
           <Image
-            src={anh2}
+            src={anh1}
             alt={""}
             className={styles.buttonAction}
             onClick={() => handOnclickImg(anh1)}
@@ -46,14 +46,14 @@ const ProductInfoLeft: React.FC = () => {
             onClick={() => handOnclickImg(anh2)}
           />
           <Image
-            src={anh2}
+            src={anh3}
             alt={""}
             className={styles.buttonAction}
             onClick={() => handOnclickImg(anh3)}
           />
 
           <Image
-            src={anh2}
+            src={anh4}
             alt={""}
             className={styles.buttonAction}
             onClick={() => handOnclickImg(anh4)}
