@@ -250,7 +250,9 @@ const User = () => {
                   <Input placeholder="Nhập địa chỉ nhận hàng" />
                 </div>
                 <div className={styles.checkDefault}>
-                  <Checkbox onChange={checkBox}>Checkbox</Checkbox>
+                  <Checkbox onChange={checkBox}>
+                    Đặt làm địa chỉ mặc định
+                  </Checkbox>
                 </div>
                 <a href="#!" className={styles.button}>
                   CẬP NHẬT

@@ -3,16 +3,18 @@ import { Button, Col, Divider, Form, Input, notification, Row } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import Image from "next/image";
-import { authenticate } from "@/utils/actions";
+import { authenticate, login } from "@/utils/actions";
 import { useRouter } from "next/navigation";
 import ModalReactive from "./modal.reactive";
 import { useState } from "react";
 import ModalChangePassword from "./modal.change.password";
 import Header from "../MainLayout/header/page";
 import Footer from "../MainLayout/footer/page";
+import { useSession } from "next-auth/react"; // Import useSession
 
 const Login = () => {
   const router = useRouter();
+  const { data: session, status } = useSession();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [changePassword, setChangePassword] = useState(false);
@@ -21,7 +23,6 @@ const Login = () => {
     const { username, password } = values;
     setUserEmail("");
     const res = await authenticate(username, password);
-
     if (res?.error) {
       if (res?.code === 2) {
         setIsModalOpen(true);
@@ -33,7 +34,19 @@ const Login = () => {
         description: res?.error,
       });
     } else {
-      router.push("/dashboard");
+      if (session?.user?.role === "ADMIN") {
+        console.log("role ", session?.user?.role);
+        router.push("/dashboard");
+      } else if (session?.user?.role === "USER") {
+        console.log("role ", session?.user?.role);
+        router.push("/user");
+      } else {
+        console.log(session);
+        notification.error({
+          message: "Error",
+          description: "Invalid role.",
+        });
+      }
     }
   };
 
@@ -43,7 +56,7 @@ const Login = () => {
 
       <div style={{ height: "500px" }}>
         <Row justify={"center"} style={{ margin: "70px" }}>
-          <Col xs={24} md={16} lg={8} style={{maxWidth:'450px'}}>
+          <Col xs={24} md={16} lg={8} style={{ maxWidth: "450px" }}>
             <fieldset
               style={{
                 padding: "15px",

@@ -7,15 +7,20 @@ import logo from "../../../../public/assets/imgs/logo.svg";
 import Icon, {
   DownOutlined,
   LoginOutlined,
+  LogoutOutlined,
   MenuOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Button, Dropdown, Input, MenuProps } from "antd";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 const { Search } = Input;
 
-const Header = () => {
+const Header = (props: any) => {
+  const { data: session, status } = useSession();
+
   const [hovered, setHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -267,13 +272,34 @@ const Header = () => {
           </nav>
 
           <div className={styles.login}>
-            <Link href="/auth/login" className={styles.signUpButton}>
+            {/* Kiểm tra nếu người dùng đã đăng nhập */}
+            {status === "authenticated" ? (
+              // Hiển thị nút "Đăng xuất" nếu đã đăng nhập
+              <span className={styles.signUpButton} onClick={() => signOut()}>
+                {/* <LoginOutlined
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                /> */}
+                <LogoutOutlined />
+                Đăng xuất
+              </span>
+            ) : (
+              // Hiển thị nút "Đăng nhập" nếu chưa đăng nhập
+              <Link href="/auth/login" className={styles.signUpButton}>
+                <LoginOutlined
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                />
+                Đăng nhập
+              </Link>
+            )}
+            {/* <Link href="/auth/login" className={styles.signUpButton}>
               <LoginOutlined
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               />
               Đăng nhập
-            </Link>
+            </Link> */}
             <Link href="#!" className={styles.signUpButton}>
               <ShoppingCartOutlined />
               Giỏ hàng

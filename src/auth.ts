@@ -6,6 +6,7 @@ import {
 } from "./utils/errors";
 import { sendRequest } from "./utils/api";
 import { IUser } from "./types/next-auth";
+import router from "next/router";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -15,6 +16,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
+        // console.log("Credentials received:", credentials);
         let user = null;
         const res = await sendRequest<IBackendRes<ILogin>>({
           method: "POST",
@@ -25,12 +27,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           },
         });
 
+
+        // console.log(res)
+
         if (+res.statusCode === 201) {
+          // console.log(res.data)
           return {
+            
             _id: res.data?.user?._id,
             name: res.data?.user?.name,
             email: res.data?.user?.email,
             access_token: res.data?.access_token,
+            role:res.data?.user.role,
+            
           };
         } else if (+res.statusCode === 401) {
           throw new InvalidEmailPasswordError();
@@ -39,12 +48,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         } else {
           throw new Error("Internal server error 123");
         }
-
-        // return user object with their profile data
-      },
+        
+       }
     }),
   ],
   pages: {
+    
     signIn: "/auth/login",
   },
   //  By default, the `id` property does not exist on `token` or `session`. See the [TypeScript](https://authjs.dev/getting-started/typescript) on how to add it.
@@ -57,7 +66,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token;
     },
     session({ session, token }) {
+      console.log("Session updated: ", session);
       (session.user as IUser) = token.user;
+      
       return session;
     },
     authorized: async ({ auth }) => {
