@@ -12,7 +12,7 @@ import {
 } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { sendRequest } from "@/utils/api";
+import { sendRequest } from "@/api/api";
 import { useRouter } from "next/navigation";
 
 const Verify = (props: any) => {

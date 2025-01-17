@@ -8,7 +8,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import { sendRequest } from "@/utils/api";
+import { sendRequest } from "@/api/api";
 import Email from "next-auth/providers/email";
 
 const ModalChangePassword = (props: any) => {

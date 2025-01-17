@@ -1,0 +1,216 @@
+/* Container chung */
+.container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Tiêu đề */
+  .header {
+    padding: 0 0 25px 0;
+    text-align: center;
+    color: #2c3e50; /* Màu xám xanh dương đậm */
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Text Loading */
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    color: #7f8c8d; /* Màu xám nhẹ */
+  }
+  
+  /* Bảng */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ cho bảng */
+    background-color: #ffffff;
+  }
+  
+  /* Các tiêu đề trong bảng */
+  .table th,
+  .table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 16px;
+    color: #34495e; /* Màu xám đậm */
+    border-bottom: 2px solid #ecf0f1; /* Màu xám nhạt cho đường viền */
+  }
+  
+  .table th {
+    font-weight: bold;
+    background-color: #f5f5f5; /* Màu nền nhẹ cho tiêu đề */
+  }
+  
+  .table tr:hover {
+    background-color: #ecf0f1; /* Màu nền sáng khi hover */
+  }
+  
+  /* Trạng thái Active/Inactive */
+  .status-active {
+    color: #27ae60; /* Màu xanh lá cây */
+    font-weight: bold;
+  }
+  
+  .status-inactive {
+    color: #e74c3c; /* Màu đỏ */
+    font-weight: bold;
+  }
+  
+  /* Nút Edit và Delete */
+  .actions-button {
+    background-color: #3498db; /* Màu xanh dương */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions-button:hover {
+    background-color: #2980b9; /* Màu xanh dương đậm khi hover */
+  }
+  
+  .actions-delete {
+    background-color: #e74c3c; /* Màu đỏ */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions-delete:hover {
+    background-color: #c0392b; /* Màu đỏ đậm khi hover */
+  }
+  
+  /* Modal Styles */
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ cho modal */
+    z-index: 1000;
+    width: 400px;
+    max-width: 100%;
+  }
+  
+  .modal h2 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .modal label {
+    display: block;
+    margin-bottom: 5px;
+    color: #34495e;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #34495e;
+  }
+  
+  .modalActions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .updateButton,
+  .cancelButton {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .updateButton {
+    background-color: #2ecc71; /* Màu xanh lá cây */
+    color: white;
+  }
+  
+  .updateButton:hover {
+    background-color: #27ae60; /* Màu xanh lá cây đậm khi hover */
+  }
+  
+  .cancelButton {
+    background-color: #e74c3c; /* Màu đỏ */
+    color: white;
+  }
+  
+  .cancelButton:hover {
+    background-color: #c0392b; /* Màu đỏ đậm khi hover */
+  }
+  
+  .modal input:focus {
+    outline: none;
+    border-color: #3498db; /* Màu xanh dương khi input được focus */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .table {
+      font-size: 14px;
+    }
+  
+    .modal {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .modal h2 {
+      font-size: 20px;
+    }
+  
+    .updateButton,
+    .cancelButton {
+      font-size: 14px;
+    }
+  }
+  
+
+  .addButton {
+    background-color: #4CAF50; /* Màu nền xanh lá */
+    color: white; /* Màu chữ trắng */
+    border: none; /* Không có đường viền */
+    padding: 10px 20px; /* Khoảng cách nội dung button */
+    font-size: 16px; /* Kích thước chữ */
+    border-radius: 5px; /* Bo tròn các góc */
+    cursor: pointer; /* Thêm con trỏ chuột khi di chuột qua */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển màu nền và nhấn khi bấm */
+    margin-bottom: 20px;
+  }
+  
+  .addButton:hover {
+    background-color: #45a049; /* Màu nền khi hover (di chuột qua) */
+  }
+  
+  .addButton:active {
+    transform: scale(0.98); /* Khi nhấn sẽ thu nhỏ button một chút */
+  }
+  
+  .addButton svg {
+    margin-right: 8px; /* Khoảng cách giữa biểu tượng và chữ */
+  }
+  
+  .addButton:focus {
+    outline: none; /* Loại bỏ viền khi focus */
+  }
+  

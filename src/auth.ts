@@ -4,7 +4,7 @@ import {
   InactiveAccountError,
   InvalidEmailPasswordError,
 } from "./utils/errors";
-import { sendRequest } from "./utils/api";
+import { sendRequest } from "./api/api";
 import { IUser } from "./types/next-auth";
 import router from "next/router";
 
@@ -66,7 +66,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token;
     },
     session({ session, token }) {
-      console.log("Session updated: ", session);
+      // console.log("Session updated: ", session);
       (session.user as IUser) = token.user;
       
       return session;

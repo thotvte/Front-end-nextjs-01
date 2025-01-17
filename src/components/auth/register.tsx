@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Col, Divider, Form, Input, notification, Row } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { sendRequest } from "@/utils/api";
+import { sendRequest } from "@/api/api";
 import { useRouter } from "next/navigation";
 import Footer from "../MainLayout/footer/page";
 import Header from "../MainLayout/header/page";
@@ -35,7 +35,7 @@ const Register = () => {
     <>
       <Header />
       <Row justify={"center"} style={{ margin: "70px" }}>
-        <Col xs={24} md={16} lg={8} style={{maxWidth:'450px'}}>
+        <Col xs={24} md={16} lg={8} style={{ maxWidth: "450px" }}>
           <fieldset
             style={{
               padding: "15px",

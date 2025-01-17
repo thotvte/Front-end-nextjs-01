@@ -38,4 +38,23 @@ declare global {
     };
     access_token: string;
   }
+
+  interface User {
+    _id: string;
+    email: string;
+    role: string;
+    accountType: string;
+    isActive: boolean;
+    codeId: string;
+    codeExpired: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  }
+  
+  
+  
+
 }
+
+

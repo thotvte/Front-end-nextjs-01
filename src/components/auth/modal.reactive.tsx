@@ -8,7 +8,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import { sendRequest } from "@/utils/api";
+import { sendRequest } from "@/api/api";
 
 const ModalReactive = (props: any) => {
   const { isModalOpen, setIsModalOpen, userEmail } = props;
