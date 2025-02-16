@@ -4,17 +4,43 @@ import Rating from "./Rating";
 import Specifications from "./specifications";
 import styles from "../styles.module.css";
 import Image, { StaticImageData } from "next/image";
-import anh1 from "../../../../../public/assets/imgs/sac1.jpg";
-import anh2 from "../../../../../public/assets/imgs/sac2.jpg";
-import anh3 from "../../../../../public/assets/imgs/sac3.jpg";
-import anh4 from "../../../../../public/assets/imgs/sac4.jpg";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-const ProductInfoLeft: React.FC = () => {
-  const [action, setAction] = useState(anh1);
+interface Products {
+  data: any;
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  stockQuantity: number;
+  discount: number;
+  image: string[];
+  category: string;
+  ram: string;
+  storageCapacity: string;
+  cpu: string;
+  gpu: string;
+  operatingSystem: string;
+  cpuSpeed: string;
+  cameraResolution: string;
+  screenTechnology: string;
+  screenResolution: string;
+  widescreen: string;
+  batteryCapacity: string;
+  maximumChargingSupport: string;
+  design: string;
+  theLaunchTime: string;
+  material: string;
+  sizeAndVolume: string;
+  company: string;
+  color: string;
+}
 
-  const handOnclickImg = (anh: StaticImageData): void => {
+const ProductInfoLeft = ({ product }: { product: Products }) => {
+  const [action, setAction] = useState(`${product.data.image[0]}`);
+
+  const handOnclickImg = (anh: string): void => {
     setAction(anh);
   };
   return (
@@ -32,36 +58,24 @@ const ProductInfoLeft: React.FC = () => {
           <Image src={action} alt={""} width={570} height={380} />
           <RightOutlined className={styles.next} />
         </div>
-        <div className={styles.buttonImg}>
-          <Image
-            src={anh1}
-            alt={""}
-            className={styles.buttonAction}
-            onClick={() => handOnclickImg(anh1)}
-          />
-          <Image
-            src={anh2}
-            alt={""}
-            className={styles.buttonAction}
-            onClick={() => handOnclickImg(anh2)}
-          />
-          <Image
-            src={anh3}
-            alt={""}
-            className={styles.buttonAction}
-            onClick={() => handOnclickImg(anh3)}
-          />
-
-          <Image
-            src={anh4}
-            alt={""}
-            className={styles.buttonAction}
-            onClick={() => handOnclickImg(anh4)}
-          />
-        </div>
+        {action && (
+          <div className={styles.buttonImg}>
+            {product.data.image.map((img: string, index: number) => (
+              <Image
+                key={index}
+                src={img}
+                alt={`image-${index}`}
+                className={styles.buttonAction}
+                onClick={() => handOnclickImg(img)}
+                width={570}
+                height={380}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <Policy />
-      <Specifications />
+      <Specifications product={product} />
       <Rating />
     </div>
   );

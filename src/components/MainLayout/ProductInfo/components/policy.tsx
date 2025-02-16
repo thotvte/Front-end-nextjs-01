@@ -20,7 +20,7 @@ const Policy = () => {
           fontSize: "16px",
         }}
       >
-        Thế Giới Di Động cam kết
+        LESSON cam kết
       </h2>
       <ul style={{ paddingLeft: "0" }}>
         <li

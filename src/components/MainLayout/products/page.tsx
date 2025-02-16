@@ -7,7 +7,7 @@ const Product = () => {
     <div
       className="main-content"
       style={{
-        maxHeight: "890px",
+        // maxHeight: "890px",
         backgroundColor: "#FFFFFF",
         borderRadius: "15px",
         marginTop: "20px",

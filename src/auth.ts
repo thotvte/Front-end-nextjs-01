@@ -7,6 +7,7 @@ import {
 import { sendRequest } from "./api/api";
 import { IUser } from "./types/next-auth";
 import router from "next/router";
+import { use } from "react";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -27,19 +28,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           },
         });
 
-
-        // console.log(res)
-
         if (+res.statusCode === 201) {
-          // console.log(res.data)
+          // console.log('1111111111111111111',res)
           return {
             
             _id: res.data?.user?._id,
             name: res.data?.user?.name,
             email: res.data?.user?.email,
             access_token: res.data?.access_token,
-            role:res.data?.user.role,
-            
+            role:res.data?.user?.role,
+            phone:res.data?.user?.phone,
+            address:res.data?.user?.address,
           };
         } else if (+res.statusCode === 401) {
           throw new InvalidEmailPasswordError();
@@ -61,6 +60,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     jwt({ token, user }) {
       if (user) {
         // User is available during sign-in
+        // console.log('JWT',user)
         token.user = user as IUser;
       }
       return token;

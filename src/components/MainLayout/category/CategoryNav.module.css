@@ -8,9 +8,10 @@
   cursor: pointer;
 }
 
+
 .navItem {
   padding: 20px 40px;
-  width: 17%;
+  width: 25%;
   font-weight: 500;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }

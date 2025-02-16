@@ -474,8 +474,7 @@
   color: #d92d20;
 }
 
-.blockPrice1 {
-}
+
 
 .blockPromo {
   border-radius: 8px;
@@ -508,8 +507,7 @@
   font-style: normal;
 }
 
-.prContent {
-}
+
 
 .prItem {
   padding: 15px 10px 10px 10px;
@@ -530,7 +528,7 @@
   margin-top: 2px;
   text-align: center;
   width: 16px;
-  float: left;
+  
 }
 
 .divbRight {
@@ -548,8 +546,7 @@
   color: #4a90e2;
 }
 
-.deliverytime {
-}
+
 
 .blue {
   color: #2a83e9;
@@ -660,14 +657,17 @@
 .buttonImg{
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 5px;
+  width: 680px;
+  margin: 0 auto;
+
 }
 
 .buttonAction{
   margin-top: 20px;
   height: 40px;
   width: 70px;
-  padding: 5px;
+  padding: 1px;
   box-sizing: border-box;
   cursor: pointer;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -676,5 +676,5 @@
 }
 
 .buttonAction:hover{
-  background-color: #b8d1e9;
+  border: 2px solid #bbddfd;
 }

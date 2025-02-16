@@ -10,7 +10,44 @@ import {
   ShopOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
-const ProductInfoRight: React.FC = () => {
+
+interface Products {
+  data: any;
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  stockQuantity: number;
+  discount: number;
+  image: string[];
+  category: string;
+  ram: string;
+  storageCapacity: string;
+  cpu: string;
+  gpu: string;
+  operatingSystem: string;
+  cpuSpeed: string;
+  cameraResolution: string;
+  screenTechnology: string;
+  screenResolution: string;
+  widescreen: string;
+  batteryCapacity: string;
+  maximumChargingSupport: string;
+  design: string;
+  theLaunchTime: string;
+  material: string;
+  sizeAndVolume: string;
+  company: string;
+  color: string;
+}
+
+const ProductInfoRight = ({ product }: { product: Products }) => {
+  const formatCurrency = (price: any) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(price);
+  };
   return (
     <div className={styles.boxRight}>
       <div className={styles.bannerDetail}>
@@ -26,28 +63,36 @@ const ProductInfoRight: React.FC = () => {
         <div className={styles.box03}>
           <a href="#!" className={styles.box03Item1}>
             <div className={styles.circle1} />
-            Trắng
+            {product.data.color}
           </a>
 
-          <a href="#!" className={styles.box03Item2}>
+          {/* <a href="#!" className={styles.box03Item2}>
             <div className={styles.circle2} />
             Đen
-          </a>
+          </a> */}
         </div>
       </div>
 
       <div className={styles.box04Txt}>
         Giá tại{" "}
         <a href="#!">
-          Hồ Chí Minh <DownOutlined />
+          Đà nẵng <DownOutlined />
         </a>
       </div>
 
       <div className={styles.priceOne}>
         <div className={styles.boxPrice}>
-          <p className={styles.boxPricePresent}>440.000₫ </p>
-          <p className={styles.boxPriceOld}>550.000₫</p>
-          <p className={styles.boxPricePercent}>-20%</p>
+          <p className={styles.boxPricePresent}>
+            {formatCurrency(
+              product.data.price * (1 - product.data.discount / 100)
+            )}
+          </p>
+          <p className={styles.boxPriceOld}>
+            {formatCurrency(product.data.price)}
+          </p>
+          <p className={styles.boxPricePercent}>
+            {product.data.discount + " %"}
+          </p>
         </div>
       </div>
 

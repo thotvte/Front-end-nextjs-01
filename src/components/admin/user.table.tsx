@@ -59,8 +59,6 @@ const UserList = () => {
         const response = await axios.get<ApiResponse>(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users`
         );
-
-        // Lọc danh sách người dùng chỉ lấy những người có role === "USER"
         const filteredUsers = response.data.data.results.filter(
           (user) => user.role === "USER"
         );

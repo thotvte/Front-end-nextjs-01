@@ -14,6 +14,7 @@ const monthFormat = "YYYY/MM";
 import { Input, QRCode } from "antd";
 import appstore from "../../../public/assets/imgs/appstore.png";
 import googleplay from "../../../public/assets/imgs/googleplay.png";
+import { signOut, useSession } from "next-auth/react";
 import {
   EditOutlined,
   LeftOutlined,
@@ -25,6 +26,8 @@ const checkBox: CheckboxProps["onChange"] = (e) => {
 };
 
 const User = () => {
+  const { data: session, status } = useSession();
+  console.log(session);
   const [value, setValue] = useState(1);
 
   const [checkOut, setCheckOut] = useState(false);
@@ -43,13 +46,14 @@ const User = () => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+
   return (
     <div style={{ backgroundColor: "#edf0f5" }}>
       <div className={styles.user}>
         <div className={styles.userTop}>
           <div className={styles.menuLeft}>
             <h2 className={styles.menuLeftName}>
-              Chào Anh : <b className={styles.fullName}>Trương Văn Thọ</b>
+              Chào Anh : <b className={styles.fullName}>{session?.user.name}</b>
             </h2>
             <ul>
               <li>
@@ -65,10 +69,10 @@ const User = () => {
                 onClick={() => hanldCheck(false)}
                 className={!checkOut ? styles.active : ""}
               >
-                <a href="#!">Thông tin và sổ địa chỉ</a>
+                <a>Thông tin và sổ địa chỉ</a>
               </li>
             </ul>
-            <a href="#!" className={styles.btnLogout}>
+            <a href="#!" onClick={() => signOut()} className={styles.btnLogout}>
               Đăng xuất
             </a>
             <div className={styles.promote}>
@@ -189,12 +193,19 @@ const User = () => {
                 <div className={styles.profileMain}>
                   <div className={styles.profileInfo}>
                     <p>
-                      Anh <span id="username">Thọ Trương Văn</span> - 0932320642
+                      Anh <span id="username">{session?.user.name} - </span>
+                      {session?.user.phone === null!
+                        ? session?.user.phone
+                        : "Số điện thoại hiện đang khả dụng"}
                     </p>
-                    <a href="#!" onClick={() => hanldEdit(true)}>
-                      <EditOutlined />
-                      <span>Sửa</span>
-                    </a>
+                    {edit === true ? (
+                      ""
+                    ) : (
+                      <a href="#!" onClick={() => hanldEdit(true)}>
+                        <EditOutlined />
+                        <span>Sửa</span>
+                      </a>
+                    )}
                   </div>
                   {edit && (
                     <div className={styles.profileInputGroup}>
@@ -246,14 +257,11 @@ const User = () => {
               </div>
               <div className={styles.addressArea}>
                 <h3>ĐỊA CHỈ NHẬN HÀNG</h3>
+                <p>{session?.user.address}</p>
                 <div>
                   <Input placeholder="Nhập địa chỉ nhận hàng" />
                 </div>
-                <div className={styles.checkDefault}>
-                  <Checkbox onChange={checkBox}>
-                    Đặt làm địa chỉ mặc định
-                  </Checkbox>
-                </div>
+                <div className={styles.checkDefault}></div>
                 <a href="#!" className={styles.button}>
                   CẬP NHẬT
                 </a>

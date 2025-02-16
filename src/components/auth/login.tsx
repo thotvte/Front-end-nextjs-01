@@ -2,27 +2,47 @@
 import { Button, Col, Divider, Form, Input, notification, Row } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import Image from "next/image";
-import { authenticate, login } from "@/utils/actions";
+import { authenticate } from "@/utils/actions";
 import { useRouter } from "next/navigation";
 import ModalReactive from "./modal.reactive";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalChangePassword from "./modal.change.password";
 import Header from "../MainLayout/header/page";
 import Footer from "../MainLayout/footer/page";
-import { useSession } from "next-auth/react"; // Import useSession
+import { signIn, useSession } from "next-auth/react"; // Import signIn from next-auth
 
 const Login = () => {
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession(); // Get session info
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [changePassword, setChangePassword] = useState(false);
+
+  // Điều hướng sau khi session được tải (người dùng đã đăng nhập)
+  useEffect(() => {
+    if (status === "loading") {
+      return; // Đợi session được tải
+    }
+    if (status === "authenticated") {
+      router.refresh();
+      if (session?.user?.role === "ADMIN") {
+        router.push("/dashboard");
+      } else if (session?.user?.role === "USER") {
+        router.push("/user");
+      } else {
+        notification.error({
+          message: "Error",
+          description: "Invalid role.",
+        });
+      }
+    }
+  }, [status, session, router]);
 
   const onFinish = async (values: any) => {
     const { username, password } = values;
     setUserEmail("");
     const res = await authenticate(username, password);
+
     if (res?.error) {
       if (res?.code === 2) {
         setIsModalOpen(true);
@@ -34,19 +54,21 @@ const Login = () => {
         description: res?.error,
       });
     } else {
-      if (session?.user?.role === "ADMIN") {
-        console.log("role ", session?.user?.role);
-        router.push("/dashboard");
-      } else if (session?.user?.role === "USER") {
-        console.log("role ", session?.user?.role);
-        router.push("/user");
-      } else {
-        console.log(session);
-        notification.error({
-          message: "Error",
-          description: "Invalid role.",
-        });
-      }
+      // Đăng nhập thành công, bạn có thể gọi signIn() từ next-auth để cập nhật session
+      notification.success({
+        message: "Login successful",
+        description: "You are successfully logged in!",
+      });
+
+      // Gọi signIn từ next-auth để cập nhật session
+      signIn("credentials", {
+        username: username,
+        password: password,
+        redirect: false, // Không tự động chuyển hướng khi đăng nhập thành công
+      }).then(() => {
+        // Sau khi cập nhật session, kiểm tra và điều hướng
+        router.push(session?.user?.role === "ADMIN" ? "/dashboard" : "/user");
+      });
     }
   };
 

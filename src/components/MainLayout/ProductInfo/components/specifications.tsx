@@ -1,7 +1,37 @@
 import React, { useState } from "react";
 import styles from "../styles.module.css";
 
-const Specifications: React.FC = () => {
+interface Products {
+  data: any;
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  stockQuantity: number;
+  discount: number;
+  image: string[];
+  category: string;
+  ram: string;
+  storageCapacity: string;
+  cpu: string;
+  gpu: string;
+  operatingSystem: string;
+  cpuSpeed: string;
+  cameraResolution: string;
+  screenTechnology: string;
+  screenResolution: string;
+  widescreen: string;
+  batteryCapacity: string;
+  maximumChargingSupport: string;
+  design: string;
+  theLaunchTime: string;
+  material: string;
+  sizeAndVolume: string;
+  company: string;
+  color: string;
+}
+
+const Specifications = ({ product }: { product: Products }) => {
   const [action, setAction] = useState(true);
 
   const handleClick = (index: boolean) => {
@@ -50,87 +80,175 @@ const Specifications: React.FC = () => {
             <ul className={styles.textSpecifi}>
               <li>
                 <aside>
-                  <strong>Model:</strong>
+                  <strong>Hệ điều hành:</strong>
                 </aside>
                 <aside>
-                  <span>CD350 15539</span>
-                </aside>
-              </li>
-
-              <li>
-                <aside>
-                  <strong>Chức năng:</strong>
-                </aside>
-                <aside>
-                  <span>Sạc</span>
+                  {/* <span>CD350 15539</span> */}
+                  <span>{product.data.operatingSystem}</span>
                 </aside>
               </li>
 
               <li>
                 <aside>
-                  <strong>Đầu ra:</strong>
+                  <strong>Chip xử lý (CPU):</strong>
                 </aside>
                 <aside>
-                  <span>Type C 25W</span>
-                </aside>
-              </li>
-
-              <li>
-                <aside>
-                  <strong>Dòng sạc tối đa:</strong>
-                </aside>
-                <aside>
-                  <span>25 W</span>
+                  {/* <span>Sạc</span> */}
+                  <span>{product.data.cpu}</span>
                 </aside>
               </li>
 
               <li>
                 <aside>
-                  <strong>Kích thước:</strong>
+                  <strong>Tốc độ CPU:</strong>
                 </aside>
                 <aside>
-                  <span>Dài 6.69 cm - Ngang 3.8 cm - Cao 2.2 cm</span>
+                  {/* <span>Type C 25W</span> */}
+                  <span>{product.data.cpuSpeed}</span>
                 </aside>
               </li>
 
               <li>
                 <aside>
-                  <strong>Công nghệ/Tiện ích:</strong>
+                  <strong>Chip đồ họa (GPU):</strong>
+                </aside>
+                <aside>
+                  {/* <span>25 W</span> */}
+                  <span>{product.data.gpu}</span>
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>RAM:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Dài 6.69 cm - Ngang 3.8 cm - Cao 2.2 cm</span> */}
+                  <span>{product.data.ram}</span>
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Dung lượng lưu trữ:</strong>
                 </aside>
                 <aside>
                   <a className={styles.tzLink} href="#!" target="_blank">
-                    Công nghệ GaN
+                    {product.data.storageCapacity}
                   </a>
-                  <a className={styles.tzLink} href="#!" target="_blank">
+                  {/* <a className={styles.tzLink} href="#!" target="_blank">
                     Power Delivery
-                  </a>
+                  </a> */}
                 </aside>
               </li>
 
               <li>
                 <aside>
-                  <strong>Sản xuất tại:</strong>
+                  <strong>Độ phân giải camera sau:</strong>
                 </aside>
                 <aside>
-                  <span>Việt Nam</span>
-                </aside>
-              </li>
-
-              <li>
-                <aside>
-                  <strong>Thương hiệu của:</strong>
-                </aside>
-                <aside>
-                  <span>Hàn Quốc</span>
+                  {/* <span>Việt Nam</span> */}
+                  <span>{product.data.cameraResolution}</span>
                 </aside>
               </li>
 
               <li>
                 <aside>
-                  <strong>Hãng:</strong>
+                  <strong>Công nghệ màn hình:</strong>
                 </aside>
                 <aside>
-                  <span>Samsung</span>
+                  {/* <span>Hàn Quốc</span> */}
+                  <span>{product.data.screenTechnology}</span>
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Độ phân giải màn hình:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.screenResolution}
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Màn hình rộng:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.widescreen}
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Dung lượng pin:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.batteryCapacity}
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Hỗ trợ sạc tối đa:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.maximumChargingSupport}
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Thiết kế:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.design}
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Chất liệu:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.material}
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Kích thước, khối lượng:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.sizeAndVolume}
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Thời điểm ra mắt:</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.theLaunchTime}
+                </aside>
+              </li>
+
+              <li>
+                <aside>
+                  <strong>Hãng</strong>
+                </aside>
+                <aside>
+                  {/* <span>Samsung</span> */}
+                  {product.data.company.name}
                 </aside>
               </li>
             </ul>

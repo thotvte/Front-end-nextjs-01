@@ -1,9 +1,10 @@
 import ProductInfo from "@/components/MainLayout/ProductInfo/page";
 
-const ProductInfoPage = async () => {
+const ProductInfoPage = ({ params }: { params: { id: string } }) => {
+  const { id } = params;
   return (
     <>
-      <ProductInfo />
+      <ProductInfo id={id} />
     </>
   );
 };

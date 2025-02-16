@@ -11,6 +11,8 @@ interface ProductProps {
   oldPrice: string;
   discount: number;
   image: string;
+  id: string;
+  category: string;
 }
 
 const ProductItem = ({
@@ -19,10 +21,13 @@ const ProductItem = ({
   oldPrice,
   discount,
   image,
+  id,
+  category,
 }: ProductProps) => {
   return (
     <div className={styles.product}>
-      <Link href={"/info/productinfo"}>
+      {/* <Link href={"/info/productinfo"}> */}
+      <Link href={`/info/productinfo/${id}`}>
         <Image
           src={image}
           alt="product"
@@ -36,24 +41,33 @@ const ProductItem = ({
         />
       </Link>
 
-      <Link href={"/info/productinfo"}>
+      {/* <Link href={"/info/productinfo"}> */}
+      <Link href={`/info/productinfo/${id}`}>
         <h3 className={styles.producttitle}>{title}</h3>
       </Link>
 
-      <Link href={"/info/productinfo"}>
+      {/* <Link href={"/info/productinfo"}> */}
+      <Link href={`/info/productinfo/${id}`}>
         <strong className={styles.originalprice}>{originalPrice}</strong>
       </Link>
 
-      <Link href={"/info/productinfo"}>
+      {/* <Link href={"/info/productinfo"}> */}
+      <Link href={`/info/productinfo/${id}`}>
         <div>
-          <strong className={styles.oldprice}>{oldPrice}</strong>
-          <strong className={styles.discount}>-{discount}%</strong>
+          {discount > 0 && (
+            <strong className={styles.oldprice}>{oldPrice}</strong>
+          )}
+
+          {discount > 0 && (
+            <strong className={styles.discount}>-{discount}%</strong>
+          )}
         </div>
       </Link>
 
       <Link href={"/cart"}>
         <p className={styles.btn}>Mua ngay</p>
       </Link>
+      <p style={{ display: "none" }}>{category}</p>
     </div>
   );
 };
