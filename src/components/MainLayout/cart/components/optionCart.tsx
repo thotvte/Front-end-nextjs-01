@@ -1,16 +1,26 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { RightOutlined } from "@ant-design/icons";
 import styles from "../cart.module.css";
 import Image from "next/image";
 import coupon from "../../../../../public/assets/icons/coupon.png";
+import Cart from "../page";
 
-const OptionCart = () => {
+interface ChoosedeliveryTopProps {
+  cart: Cart;
+}
+
+const OptionCart: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
   const [isOtherRequestChecked, setIsOtherRequestChecked] = useState(false);
 
   const handleCheckboxChange = () => {
     setIsOtherRequestChecked(!isOtherRequestChecked);
   };
-
+  const formatCurrency = (price: any) => {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(price);
+  };
   return (
     <div className={styles.options}>
       <div className={styles.option}>
@@ -63,7 +73,7 @@ const OptionCart = () => {
         <div className={styles.areaTotal}>
           <div className={styles.totalPrice}>
             <strong>Tổng tiền</strong>
-            <strong>1.890.000đ</strong>
+            <strong>{formatCurrency(cart.totalAmount)}</strong>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { ShoppingOutlined } from "@ant-design/icons";
 const EmptyCartPage = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className={styles.emptycart}>
         <div className={styles.cartEmpty}>
           <ShoppingOutlined style={{ color: "blue", fontSize: "150px" }} />

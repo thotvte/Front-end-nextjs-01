@@ -17,32 +17,65 @@ import { Button, Dropdown, Input, MenuProps } from "antd";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-interface Category {
+interface Product {
+  productId: any;
+  quantity: number;
   _id: string;
   name: string;
+  description: string;
+  price: number;
+  stockQuantity: number;
+  discount: number;
+  image: string[];
+  category: string;
+  ram: string;
+  storageCapacity: string;
+  cpu: string;
+  gpu: string;
+  operatingSystem: string;
+  cpuSpeed: string;
+  cameraResolution: string;
+  screenTechnology: string;
+  screenResolution: string;
+  widescreen: string;
+  batteryCapacity: string;
+  maximumChargingSupport: string;
+  design: string;
+  theLaunchTime: string;
+  material: string;
+  sizeAndVolume: string;
+  company: string;
+  color: string;
+}
+
+interface Cart {
+  _id: string;
+  user: string;
+  products: Product[];
+  createdAt: string;
+  updatedAt: string;
+  totalAmount: number;
 }
 
 interface ApiResponse {
   statusCode: number;
   message: string;
-  data: {
-    meta: {
-      current: number;
-      pageSize: number;
-      pages: number;
-      total: number;
-    };
-    results: Category[];
-  };
+  data: Cart[];
 }
 
 const { Search } = Input;
 
 const Header = (props: any) => {
   const { data: session, status } = useSession();
-  const [categories, setCategories] = useState<Category[]>([]);
   const [hovered, setHovered] = useState(false);
+  const [search, setSearch] = useState("");
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [cart, setCart] = useState<Cart | null>(null);
 
   const handleMouseEnter = () => {
     setHovered(true);
@@ -51,6 +84,61 @@ const Header = (props: any) => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
+
+  const handleSearch = (value: string) => {
+    // Đối tượng ánh xạ từ khóa tìm kiếm với URL tương ứng
+    const searchMap: { [key: string]: string } = {
+      dienthoai: "/sanpham/dienthoai",
+      laptop: "/sanpham/laptop",
+      phukien: "/sanpham/phukien",
+      smartwatch: "/sanpham/smartwatch",
+      dongho: "/sanpham/dongho",
+      tablet: "/sanpham/tablet",
+      maycu: "/sanpham/tcdm",
+      pc: "/sanpham/pc",
+      sim: "/sanpham/sim",
+      dvti: "/sanpham/dvti",
+    };
+    const lowerCaseSearchValue = value.toLowerCase();
+
+    if (searchMap[lowerCaseSearchValue]) {
+      replace(searchMap[lowerCaseSearchValue]);
+    } else {
+      replace(`${pathname}`);
+    }
+  };
+
+  useEffect(() => {
+    const fetchCarts = async () => {
+      setLoading(true);
+      try {
+        const token = session?.user?.access_token;
+
+        if (!token) {
+          console.error("Không có token, yêu cầu không thể thực hiện.");
+          return;
+        }
+        {
+          const response = await axios.get<ApiResponse>(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/carts`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setCart(response.data.data[0]);
+        }
+      } catch (error) {
+        console.error("Lỗi khi lấy Cart:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCarts();
+  }, [session]);
+
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   return (
     <div className="header fixed">
@@ -70,7 +158,7 @@ const Header = (props: any) => {
               <li className={styles.search}>
                 <Search
                   placeholder="Nhập tên điện thoại, máy tính, phụ kiện cần tìm "
-                  onSearch={(value) => console.log(value)}
+                  onSearch={handleSearch}
                 />
               </li>
             </ul>
@@ -104,7 +192,33 @@ const Header = (props: any) => {
             )}
 
             <Link href="/cart" className={styles.signUpButton}>
-              <ShoppingCartOutlined />
+              <div style={{ position: "relative" }}>
+                <ShoppingCartOutlined style={{ fontSize: "24px" }} />
+                {cart?.products && (
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "-5px",
+                      right: "-5px",
+                      backgroundColor: "red",
+                      color: "white",
+                      borderRadius: "50%",
+                      width: "20px",
+                      height: "20px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "12px",
+                    }}
+                  >
+                    {cart?.products.reduce(
+                      (total, item) =>
+                        total + (quantities[item._id] || item.quantity),
+                      0
+                    )}{" "}
+                  </span>
+                )}
+              </div>
               Giỏ hàng
             </Link>
           </div>

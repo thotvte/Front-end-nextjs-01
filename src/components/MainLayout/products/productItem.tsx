@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Icon from "@ant-design/icons";
 import Image from "next/image";
 import "../../../app/globals.css";
 import styles from "../products/product.module.css";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 interface ProductProps {
   title: string;
@@ -24,6 +26,33 @@ const ProductItem = ({
   id,
   category,
 }: ProductProps) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const { data: session, status } = useSession();
+  const handleAddCart = async () => {
+    if (!session?.user?.access_token) {
+      console.error("Không có token, yêu cầu không thể thực hiện.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/carts`,
+        {
+          products: [{ productId: id, quantity: 1 }],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.user.access_token}`,
+          },
+        }
+      );
+
+      console.log("Sản phẩm đã được thêm vào giỏ hàng:", response.data);
+    } catch (error) {
+      console.error("Lỗi khi thêm sản phẩm vào giỏ hàng:", error);
+    }
+  };
+
   return (
     <div className={styles.product}>
       {/* <Link href={"/info/productinfo"}> */}
@@ -65,7 +94,9 @@ const ProductItem = ({
       </Link>
 
       <Link href={"/cart"}>
-        <p className={styles.btn}>Mua ngay</p>
+        <p className={styles.btn} onClick={handleAddCart}>
+          Mua ngay
+        </p>
       </Link>
       <p style={{ display: "none" }}>{category}</p>
     </div>

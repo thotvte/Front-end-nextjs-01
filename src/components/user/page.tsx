@@ -27,15 +27,21 @@ const checkBox: CheckboxProps["onChange"] = (e) => {
 
 const User = () => {
   const { data: session, status } = useSession();
-  console.log(session);
+
   const [value, setValue] = useState(1);
 
   const [checkOut, setCheckOut] = useState(false);
 
   const [edit, setEdit] = useState(false);
 
+  const [editAddress, setEditAddress] = useState(false);
+
   const hanldEdit = (option: boolean) => {
     setEdit(option);
+  };
+
+  const handEditAddress = (option: boolean) => {
+    setEditAddress(option);
   };
 
   const hanldCheck = (option: boolean) => {
@@ -46,6 +52,8 @@ const User = () => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+
+  console.log("dâta", session);
 
   return (
     <div style={{ backgroundColor: "#edf0f5" }}>
@@ -193,10 +201,13 @@ const User = () => {
                 <div className={styles.profileMain}>
                   <div className={styles.profileInfo}>
                     <p>
-                      Anh <span id="username">{session?.user.name} - </span>
-                      {session?.user.phone === null!
-                        ? session?.user.phone
-                        : "Số điện thoại hiện đang khả dụng"}
+                      Anh{" "}
+                      <span id="username">
+                        {session?.user.name} -{" "}
+                        {session?.user.phone === "Không xác định"
+                          ? "Số điện thoại hiện đang khả dụng"
+                          : session?.user.phone}
+                      </span>
                     </p>
                     {edit === true ? (
                       ""
@@ -245,10 +256,7 @@ const User = () => {
                       </div>
                       <div className={styles.btnProfileEdit}>
                         <a href="#!" onClick={() => hanldEdit(false)}>
-                          Hủy
-                        </a>
-                        <a href="#!" style={{ color: "#F96F3A" }}>
-                          Lưu
+                          Hủy bỏ
                         </a>
                       </div>
                     </div>
@@ -257,14 +265,40 @@ const User = () => {
               </div>
               <div className={styles.addressArea}>
                 <h3>ĐỊA CHỈ NHẬN HÀNG</h3>
-                <p>{session?.user.address}</p>
-                <div>
-                  <Input placeholder="Nhập địa chỉ nhận hàng" />
+                <div
+                  style={{ display: "flex", gap: "20px", marginBottom: "10px" }}
+                >
+                  <p>
+                    {session?.user.address === "Không xác định"
+                      ? "Vui lòng thêm địa chỉ để đặt hàng !"
+                      : session?.user.address}
+                  </p>
+                  {editAddress === true ? (
+                    ""
+                  ) : (
+                    <a href="#!" onClick={() => handEditAddress(true)}>
+                      <EditOutlined />
+                      <span>Sửa</span>
+                    </a>
+                  )}
                 </div>
-                <div className={styles.checkDefault}></div>
-                <a href="#!" className={styles.button}>
-                  CẬP NHẬT
-                </a>
+
+                {editAddress === true && (
+                  <div>
+                    <Input placeholder="Nhập địa chỉ nhận hàng" />
+                    <div className={styles.btnProfileEdit}>
+                      <a href="#!" onClick={() => handEditAddress(false)}>
+                        Hủy bỏ
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {(edit || editAddress) && (
+                  <a href="#!" className={styles.button}>
+                    CẬP NHẬT
+                  </a>
+                )}
               </div>
             </div>
           )}

@@ -29,7 +29,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         });
 
         if (+res.statusCode === 201) {
-          // console.log('1111111111111111111',res)
+   
           return {
             
             _id: res.data?.user?._id,

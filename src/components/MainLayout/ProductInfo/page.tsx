@@ -60,7 +60,7 @@ const ProductInfo = ({ id }: { id: string }) => {
     };
 
     fetchProduct();
-  }, [id]); // Chạy lại khi `id` thay đổi
+  }, [id]);
 
   if (loading) return <div>Loading...</div>;
   if (!product) return <div>Không tìm thấy sản phẩm.</div>;

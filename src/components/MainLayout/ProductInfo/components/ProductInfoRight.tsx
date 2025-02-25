@@ -10,6 +10,10 @@ import {
   ShopOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
+import { useSession } from "next-auth/react";
+import logo from "../../../../../public/assets/imgs/location.png";
+import { useEffect } from "react";
+import axios from "axios";
 
 interface Products {
   data: any;
@@ -42,12 +46,42 @@ interface Products {
 }
 
 const ProductInfoRight = ({ product }: { product: Products }) => {
+  const { data: session, status } = useSession();
+
+  console.log("product", product.data._id);
+
   const formatCurrency = (price: any) => {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",
       currency: "VND",
     }).format(price);
   };
+
+  const handleAddCart = async () => {
+    if (!session?.user?.access_token) {
+      console.error("Không có token, yêu cầu không thể thực hiện.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/carts`,
+        {
+          products: [{ productId: product.data._id, quantity: 1 }],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.user.access_token}`,
+          },
+        }
+      );
+
+      console.log("Sản phẩm đã được thêm vào giỏ hàng:", response.data);
+    } catch (error) {
+      console.error("Lỗi khi thêm sản phẩm vào giỏ hàng:", error);
+    }
+  };
+
   return (
     <div className={styles.boxRight}>
       <div className={styles.bannerDetail}>
@@ -90,9 +124,13 @@ const ProductInfoRight = ({ product }: { product: Products }) => {
           <p className={styles.boxPriceOld}>
             {formatCurrency(product.data.price)}
           </p>
-          <p className={styles.boxPricePercent}>
-            {product.data.discount + " %"}
-          </p>
+          {product.data.discount > 1 ? (
+            <p className={styles.boxPricePercent}>
+              {product.data.discount + " %"}
+            </p>
+          ) : (
+            ""
+          )}
         </div>
       </div>
 
@@ -125,10 +163,30 @@ const ProductInfoRight = ({ product }: { product: Products }) => {
         </div>
         <div className={styles.deliverytime}>
           <p className={styles.blue}>
-            <a href="#!" className={styles.onoffdelibox}>
-              <HomeOutlined style={{ marginRight: "10px" }} />
-              Chọn địa chỉ nhận hàng để biết thời gian giao.
-            </a>
+            {session?.user.address == "Không xác định" ? (
+              <a href="#!" className={styles.onoffdelibox}>
+                {/* <ShopOutlined style={{ marginRight: "10px" }} /> */}
+                <Image
+                  src={logo}
+                  alt="xaomi"
+                  width={12}
+                  height={12}
+                  style={{ cursor: "pointer", marginRight: "7px" }}
+                ></Image>{" "}
+                Chọn địa chỉ nhận hàng để biết thời gian giao.
+              </a>
+            ) : (
+              <a href="#!">
+                <Image
+                  src={logo}
+                  alt="xaomi"
+                  width={12}
+                  height={12}
+                  style={{ cursor: "pointer", marginRight: "7px" }}
+                ></Image>
+                {session?.user.address}
+              </a>
+            )}
           </p>
         </div>
 
@@ -140,11 +198,11 @@ const ProductInfoRight = ({ product }: { product: Products }) => {
         </div>
 
         <div className={styles.blockButton}>
-          <a href="#!" className={styles.btnBuynow1}>
+          <a href="#!" className={styles.btnBuynow1} onClick={handleAddCart}>
             <ShoppingCartOutlined />
             Thêm vào giỏ hàng
           </a>
-          <a href="#!" className={styles.btnBuynow2}>
+          <a href="/cart" className={styles.btnBuynow2} onClick={handleAddCart}>
             Mua ngay
           </a>
         </div>
