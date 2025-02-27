@@ -7,6 +7,7 @@ import { LeftOutlined, RightOutlined, ShopOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import Cart from "../page";
 import { useSession } from "next-auth/react";
+import axios from "axios";
 
 interface ChoosedeliveryTopProps {
   cart: Cart;
@@ -15,11 +16,27 @@ interface ChoosedeliveryTopProps {
 const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
   const [action, setAction] = useState(false);
   const { data: session, status } = useSession();
-
+  const [loading, setLoading] = useState(false);
+  const [selectDelete, setSelectDelete] = useState<Record<string, boolean>>({});
   const handleAction = (option: boolean) => {
     setAction(option);
   };
 
+  console.log("selectDelete:........", selectDelete);
+
+  const handleSelectDelete = (id: string) => {
+    setSelectDelete((prev) => ({
+      ...prev,
+      [id]: true,
+    }));
+  };
+
+  const handleCancelDelete = (id: string) => {
+    setSelectDelete((prev) => ({
+      ...prev,
+      [id]: false,
+    }));
+  };
   const [quantities, setQuantities] = useState(
     cart.products.reduce((acc, item) => {
       acc[item._id] = item.quantity;
@@ -27,38 +44,86 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
     }, {} as Record<string, number>)
   );
 
-  const handleMinus = (productId: string) => {
-    setQuantities((prevQuantities) => {
-      const updatedQuantities = { ...prevQuantities };
-      if (updatedQuantities[productId] > 1) {
-        updatedQuantities[productId] -= 1;
-      }
-      return updatedQuantities;
-    });
+  const handleAddCart = async (productId: string) => {
+    if (!session?.user?.access_token) {
+      console.error("Không có token, yêu cầu không thể thực hiện.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/carts`,
+        {
+          products: [{ productId: productId, quantity: 1 }],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.user.access_token}`,
+          },
+        }
+      );
+      window.location.reload();
+
+      console.log("Sản phẩm đã được thêm số lương sản phẩm +1:", response.data);
+    } catch (error) {
+      console.error("Lỗi khi thêm sản phẩm vào giỏ hàng:", error);
+    }
+    console.log(productId);
   };
 
-  const handleAdd = (productId: string) => {
-    setQuantities((prevQuantities) => {
-      const updatedQuantities = { ...prevQuantities };
-      updatedQuantities[productId] += 1;
-      return updatedQuantities;
-    });
+  const handleMinusCart = async (productId: string) => {
+    if (!session?.user?.access_token) {
+      console.error("Không có token, yêu cầu không thể thực hiện.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/carts`,
+        {
+          products: [{ productId: productId, quantity: -1 }],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.user.access_token}`,
+          },
+        }
+      );
+      window.location.reload();
+      console.log(
+        "Sản phẩm đã được giảm số lương của sản phẩm -1:",
+        response.data
+      );
+    } catch (error) {
+      console.error("Lỗi khi thêm sản phẩm vào giỏ hàng:", error);
+    }
+    console.log(productId);
   };
 
-  const calculateTotalAmount = () => {
-    return cart.products.reduce(
-      (total, item) =>
-        total + item.productId.price * (quantities[item._id] || item.quantity),
-      0
-    );
+  const handleDeleteProduct = async (productId: string) => {
+    if (!session?.user?.access_token) {
+      console.error("Không có token, yêu cầu không thể thực hiện.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/carts/${productId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${session.user.access_token}`,
+          },
+        }
+      );
+      window.location.reload();
+
+      console.log("Sản phẩm đã được Delete:", response.data);
+    } catch (error) {
+      console.error("Lỗi khi Delete sản phẩm vào giỏ hàng:", error);
+    }
   };
-
-  const [totalAmount, setTotalAmount] = useState(calculateTotalAmount());
-
-  // Cập nhật lại tổng tiền khi quantities thay đổi
-  useEffect(() => {
-    setTotalAmount(calculateTotalAmount());
-  }, [quantities]);
 
   const formatCurrency = (price: any) => {
     return new Intl.NumberFormat("vi-VN", {
@@ -66,6 +131,7 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
       currency: "VND",
     }).format(price);
   };
+
   return (
     <>
       <div className={styles.cart}>
@@ -111,42 +177,16 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
         <div className={styles.cartMain}>
           <div className={styles.middleCart}>
             <div className={styles.cartFragment}>
-              {!action &&
-                (session?.user.address == "Không xác định" ? (
-                  <div className={styles.location1}>
-                    <div>
-                      <div>
-                        {session.user.phone == "Không xác định" ? (
-                          <span className={styles.titlemiddcart1}>
-                            Vui lòng cung cấp thông tin khi nhận hàng
-                          </span>
-                        ) : (
-                          <span className={styles.titlemiddcart1}>
-                            Người nhận : {session.user.name} -{" "}
-                            {session.user.phone}
-                          </span>
-                        )}
-                      </div>
-                      <div>
-                        <span className={styles.textmiddCart1}>
-                          {" "}
-                          <Image
-                            src={logo}
-                            alt="xaomi"
-                            width={12}
-                            height={12}
-                            style={{ cursor: "pointer", marginRight: "7px" }}
-                          ></Image>{" "}
-                          Đà Nẵng
-                        </span>
-                      </div>
-                    </div>
-                    <div className={styles.action1}>
-                      <RightOutlined />
-                    </div>
-                  </div>
-                ) : (
+              {!action && (
+                <div className={styles.location1}>
                   <div>
+                    <div style={{ paddingBottom: "3px" }}>
+                      <span className={styles.textmiddCart1}>
+                        {" "}
+                        <strong>Người nhận : </strong>
+                        {session?.user.name} - {session?.user.phone}
+                      </span>
+                    </div>
                     <span className={styles.textmiddCart1}>
                       {" "}
                       <Image
@@ -159,22 +199,31 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
                       {session?.user.address}
                     </span>
                   </div>
-                ))}
-
-              {action && (
-                <div className={styles.location2}>
-                  <span className={styles.titlemiddcart2}>
-                    <ShopOutlined /> Vui lòng chọn siêu thị nhận hàng
-                  </span>
-
-                  <div className={styles.action2}>
-                    <RightOutlined />
-                  </div>
                 </div>
               )}
 
-              {cart.products.map((item) => (
-                <div key={item._id} className={styles.productList}>
+              {action && (
+                <div className={styles.location2}>
+                  <div>
+                    <span className={styles.textmiddCart1}>
+                      {" "}
+                      <strong>Người nhận : </strong>
+                      {session?.user.name} - {session?.user.phone}
+                    </span>
+                  </div>
+                  <span className={styles.titlemiddcart2}>
+                    <ShopOutlined /> Vui lòng chọn siêu thị nhận hàng
+                  </span>
+                </div>
+              )}
+
+              {cart.products.map((item, index) => (
+                <div
+                  key={item._id}
+                  className={`${styles.productList} ${
+                    index === 0 ? "" : styles.nthProductList
+                  }`}
+                >
                   <div className={styles.productItem}>
                     <div className={styles.productItemInfo}>
                       <div className={styles.classImg}>
@@ -205,13 +254,23 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
 
                             <div className={styles.quantityBox}>
                               <div className={styles.productQuantity}>
-                                <button
-                                  className={styles.productQuantityRemove}
-                                >
-                                  Xóa
-                                </button>
+                                {!selectDelete[item.productId._id] && (
+                                  <button
+                                    className={styles.productQuantityRemove}
+                                    onClick={() =>
+                                      handleSelectDelete(item.productId._id)
+                                    }
+                                  >
+                                    Xóa
+                                  </button>
+                                )}
                                 <div className={styles.productQuantityBtn}>
-                                  <button onClick={() => handleMinus(item._id)}>
+                                  <button
+                                    onClick={() =>
+                                      handleMinusCart(item.productId._id)
+                                    }
+                                    disabled={quantities[item._id] === 1}
+                                  >
                                     -
                                   </button>
                                   <input
@@ -220,7 +279,11 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
                                     inputMode="numeric"
                                     readOnly
                                   />
-                                  <button onClick={() => handleAdd(item._id)}>
+                                  <button
+                                    onClick={() =>
+                                      handleAddCart(item.productId._id)
+                                    }
+                                  >
                                     +
                                   </button>
                                 </div>
@@ -228,6 +291,27 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
                             </div>
                           </div>
                         </div>
+                        {selectDelete[item.productId._id] && (
+                          <div className={styles.deleteProduct}>
+                            <span>Bạn chắc chắn muốn xóa sản phẩm này?</span>
+                            <div className={styles.btnDeleteProduct}>
+                              <button
+                                onClick={() =>
+                                  handleCancelDelete(item.productId._id)
+                                }
+                              >
+                                Không xóa
+                              </button>
+                              <button
+                                onClick={() =>
+                                  handleDeleteProduct(item.productId._id)
+                                }
+                              >
+                                Xóa
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -244,8 +328,7 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
                   )}{" "}
                   sản phẩm)
                 </span>
-                <span>{formatCurrency(totalAmount)}</span>
-                {/* <span>{cart.totalAmount}</span> */}
+                <span>{formatCurrency(cart.totalAmount)}</span>
               </div>
             </div>
           </div>

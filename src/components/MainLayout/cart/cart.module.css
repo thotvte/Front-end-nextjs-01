@@ -162,6 +162,7 @@
   margin: 0 auto;
   background-color: #cce4ff;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .action1 {
@@ -182,7 +183,7 @@
 }
 
 .location2 {
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   border: 1px dotted rgb(43 132 234);
   margin: 12px 0;
@@ -194,6 +195,7 @@
   background-color: #cce4ff;
   margin-bottom: 20px;
   align-items: center; 
+  cursor: pointer;
 }
 
 .action2 {
@@ -202,9 +204,11 @@
 }
 
 .titlemiddcart2 {
+  display: flex;
   font-size: 14px;
   line-height: 1.5;
   color: rgb(217 45 32);
+  gap: 10px;
 }
 
 
@@ -215,7 +219,13 @@
   /* background-color: #1890ff; */
   max-width: 560px;
   margin: 0 auto;
+  
 }
+
+.nthProductList {
+  border-top: 1px solid aqua;
+}
+
 
 .productItem {
   padding-top: 15px;
@@ -318,6 +328,32 @@
   background-color: #fff;
   cursor: pointer;
 }
+
+.deleteProduct{
+  margin: 0;
+  font-size: 14px;
+  color: #565758;
+}
+
+.btnDeleteProduct{
+  padding-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.btnDeleteProduct button{
+  width: 100px;
+  padding: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btnDeleteProduct button:last-child {
+  background-color: #D92D20;
+  border: none;
+  color: #fff;
+}
+
 
 .productQuantityBtn {
   display: flex;

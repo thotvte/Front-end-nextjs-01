@@ -62,6 +62,8 @@ const Cart = () => {
   const [cart, setCart] = useState<Cart | null>(null);
   const { data: session, status } = useSession();
 
+  console.log(cart);
+
   useEffect(() => {
     const fetchCarts = async () => {
       setLoading(true);
@@ -98,7 +100,7 @@ const Cart = () => {
   return (
     <>
       <Header />
-      {cart && cart.products.length > 1 ? (
+      {cart && cart.products.length >= 1 ? (
         <>
           <ChoosedeliveryTop cart={cart} />
           <Option cart={cart} />

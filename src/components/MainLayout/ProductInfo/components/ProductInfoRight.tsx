@@ -14,6 +14,7 @@ import { useSession } from "next-auth/react";
 import logo from "../../../../../public/assets/imgs/location.png";
 import { useEffect } from "react";
 import axios from "axios";
+import { notification } from "antd";
 
 interface Products {
   data: any;
@@ -58,6 +59,36 @@ const ProductInfoRight = ({ product }: { product: Products }) => {
   };
 
   const handleAddCart = async () => {
+    if (!session?.user?.access_token) {
+      console.error("Không có token, yêu cầu không thể thực hiện.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/carts`,
+        {
+          products: [{ productId: product.data._id, quantity: 1 }],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.user.access_token}`,
+          },
+        }
+      );
+      notification.success({
+        message: "Thêm vào giỏ hàng thành công!",
+        description: `${product.data.name} đã được thêm vào giỏ hàng của bạn.`,
+        placement: "bottomRight", // Vị trí của thông báo
+      });
+
+      console.log("Sản phẩm đã được thêm vào giỏ hàng:", response.data);
+    } catch (error) {
+      console.error("Lỗi khi thêm sản phẩm vào giỏ hàng:", error);
+    }
+  };
+
+  const handleBuyCart = async () => {
     if (!session?.user?.access_token) {
       console.error("Không có token, yêu cầu không thể thực hiện.");
       return;
@@ -202,7 +233,7 @@ const ProductInfoRight = ({ product }: { product: Products }) => {
             <ShoppingCartOutlined />
             Thêm vào giỏ hàng
           </a>
-          <a href="/cart" className={styles.btnBuynow2} onClick={handleAddCart}>
+          <a href="/cart" className={styles.btnBuynow2} onClick={handleBuyCart}>
             Mua ngay
           </a>
         </div>
