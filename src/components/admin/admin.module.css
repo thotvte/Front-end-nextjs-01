@@ -39,6 +39,13 @@
   background-color: #f5f5f5;
 }
 
+.table td p{
+  width: 50px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+
 .table tr:hover {
   background-color: #ecf0f1;
 }

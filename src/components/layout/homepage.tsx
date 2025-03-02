@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../MainLayout/footer/page";
 import Header from "../MainLayout/header/page";
 import Discount from "../MainLayout/discount/page";
@@ -8,10 +8,22 @@ import Image from "next/image";
 import { CloseCircleOutlined } from "@ant-design/icons";
 
 const HomePage = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+
+  // Kiểm tra localStorage xem modal đã được hiển thị chưa
+  useEffect(() => {
+    const hasSeenModal = localStorage.getItem("hasSeenModal");
+    if (!hasSeenModal) {
+      setShowModal(true); // Hiển thị modal nếu chưa được hiển thị trước đó
+    }
+  }, []);
+
   const closeModal = () => {
     setShowModal(false);
+    // Lưu trạng thái đã hiển thị modal vào localStorage
+    localStorage.setItem("hasSeenModal", "true");
   };
+
   return (
     <div>
       <Header />
@@ -69,7 +81,6 @@ const HomePage = () => {
             </div>
           )}
         </div>
-        );
       </div>
       <Footer />
     </div>

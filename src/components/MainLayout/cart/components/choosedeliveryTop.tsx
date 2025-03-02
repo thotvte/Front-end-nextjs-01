@@ -22,8 +22,6 @@ const ChoosedeliveryTop: React.FC<ChoosedeliveryTopProps> = ({ cart }) => {
     setAction(option);
   };
 
-  console.log("selectDelete:........", selectDelete);
-
   const handleSelectDelete = (id: string) => {
     setSelectDelete((prev) => ({
       ...prev,

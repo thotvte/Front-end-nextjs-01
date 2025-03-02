@@ -473,7 +473,7 @@ const AdminProduct = () => {
               <th>Tên</th>
               <th>Mô tả</th>
               <th>Giá</th>
-              <th>Số lượng</th>
+              <th>Số lượng trong kho</th>
               <th>Hệ diều hành</th>
               <th>Thiết kế</th>
               {/* <th>File ảnh</th> */}

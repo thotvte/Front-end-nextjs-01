@@ -42,8 +42,8 @@
   border-radius: 4px;
 }
 
-.active  {
-  background-color: #e4e7ed;  /* Màu nền khi mục đang được chọn */
+.active {
+  background-color: #e4e7ed; /* Màu nền khi mục đang được chọn */
   border-radius: 4px;
 }
 
@@ -184,6 +184,7 @@
   height: 370px;
   width: 100%;
   background-color: #ffffff;
+  overflow-y: scroll;
 }
 
 .notfoundList {
@@ -205,6 +206,113 @@
   color: #9da7bc;
 }
 
+.product {
+  margin: 20px 15px;
+  border: 1px solid aqua;
+  margin-bottom: 20px;
+  padding: 10px 5px;
+  border-radius: 8px;
+  background-color: hsl(65, 49%, 91%);
+}
+
+.productItem{
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+
+.productImg {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgb(137, 141, 141);
+
+}
+
+.productInfo{
+  width: 391px;
+}
+
+.productPrice {
+  display: flex;
+  width: 150px;
+}
+
+.productPrice p{
+  color: #ee4d2d;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  /* padding-bottom: 15px; */
+ 
+}
+
+.status p strong{
+  font-size: 14px;
+  color: #ee4d2d;
+}
+
+
+.lh {
+  display: flex;
+  /* justify-content: flex-end; */
+  justify-content: space-between;
+  padding: 10px;
+  gap: 10px;
+}
+
+.lh button{
+  padding: 10px 5px;
+  width: 150px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, .09)
+}
+
+.lh button:first-child{
+  background-color: #EE4D2D;
+  color: #fff;
+  border: none;
+  border-color: #ba2b0f;
+}
+
+.lh button:first-child:hover{
+  opacity: 0.9;
+}
+
+.lhBtn{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.lhYourcancel{
+display: flex;
+align-items: center;
+justify-content: flex-start;
+color: rgba(0, 0, 0, .54);
+  font-size: 12px;
+}
+
+.total{
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.total strong{
+  color: #EE4D2D;
+}
+
+.cancelOrder{
+  display: flex;
+  justify-content: center;
+}
 .groupButtonDirect {
   max-width: 350px;
   margin: 15px auto 25px;
@@ -317,11 +425,8 @@
   border: 1px solid rgb(133, 139, 139);
   padding: 5px 20px;
   border-radius: 3px;
-  background-color: #FFF8D4;
+  background-color: #fff8d4;
 }
-
-
-
 
 .addressArea {
   background: #fff;
